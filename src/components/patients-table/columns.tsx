@@ -1,6 +1,7 @@
 import type { Parameter, Patient } from "@/modules/patient/types/patient";
 import type { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "../ui/badge";
+import { formatDate } from "@/utils/date";
 
 const patientHasAlarm = (parameters: Parameter[]) => {
   return parameters.some((p) => p.alarm);
@@ -22,6 +23,9 @@ export const columns: ColumnDef<Patient>[] = [
   {
     accessorKey: "birthDate",
     header: "Birth Date",
+    cell: ({ row }) => {
+      return <div>{formatDate(row.original.birthDate)}</div>;
+    },
   },
   {
     accessorKey: "sex",

@@ -1,17 +1,30 @@
-import { PatientService } from "@/services/patients/patientService";
+import { useEffect } from "react";
+import { usePatient } from "./modules/patient/hooks/use-patient";
+import type { Patient } from "./modules/patient/types/patient";
 
-async function App() {
-  const patients = await PatientService.getAllPatients();
+function App() {
+  const { handlers, patients } = usePatient();
+
+  useEffect(() => {
+    handlers.handleGetPatients({
+      props: {},
+    });
+    console.log(patients);
+  }, []);
 
   return (
     <>
-      <h1 className="m-12 p-3 text-3xl font-bold text-red-500 underline">
-        {patients.map((patient) => (
-          <div key={patient.id}>
-            {patient.givenName} {patient.familyName}
+      <div className="flex flex-col gap-4">
+        <h1>Patient:</h1>
+        {patients?.map((p: Patient, index: number) => (
+          <div key={index}>
+            <h2>{p.familyName}</h2>
+            <p>{p.givenName}</p>
+            <p>{p.birthDate}</p>
+            <p>{p.sex}</p>
           </div>
         ))}
-      </h1>
+      </div>
     </>
   );
 }

@@ -1,2 +1,2 @@
-export * from "./config";
+export { apiClient } from "./config";
 export * from "./patients";

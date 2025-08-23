@@ -45,11 +45,3 @@ apiClient.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-
-export const apiConfig = {
-  baseUrl: apiBaseUrl,
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Basic ${btoa(`${apiUser}:${apiPassword}`)}`,
-  },
-};

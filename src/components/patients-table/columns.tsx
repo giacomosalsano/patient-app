@@ -1,7 +1,7 @@
 import type { Parameter, Patient } from "@/modules/patient/types/patient";
+import { formatDate } from "@/utils/date";
 import type { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "../ui/badge";
-import { formatDate } from "@/utils/date";
 
 const patientHasAlarm = (parameters: Parameter[]) => {
   return parameters.some((p) => p.alarm);

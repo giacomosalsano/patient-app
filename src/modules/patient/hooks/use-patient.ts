@@ -56,8 +56,6 @@ export function usePatient() {
       try {
         const { data } = await listPatients();
 
-        toast.success("Listing patients successfully");
-
         handleSetProperties({ patients: Array.isArray(data) ? data : [data] });
 
         if (onSuccess) {

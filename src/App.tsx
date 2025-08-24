@@ -12,8 +12,6 @@ function App() {
     });
   }, []);
 
-  console.log("patients:", patients);
-
   return (
     <>
       <div className="flex flex-col gap-4">

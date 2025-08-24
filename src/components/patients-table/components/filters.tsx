@@ -64,13 +64,10 @@ export function Filters({
         </Select>
 
         <Select
-          value={
-            (table.getColumn("parameters.alarm")?.getFilterValue() as string) ??
-            ""
-          }
+          value={(table.getColumn("alarm")?.getFilterValue() as string) ?? ""}
           onValueChange={(value) => {
             table
-              .getColumn("parameters.alarm")
+              .getColumn("alarm")
               ?.setFilterValue(value === "all" ? "" : value);
           }}
         >

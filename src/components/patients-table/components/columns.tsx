@@ -54,7 +54,8 @@ export const columns: ColumnDef<Patient>[] = [
     },
   },
   {
-    accessorKey: "parameters.alarm",
+    id: "alarm",
+    accessorFn: (row) => patientHasAlarm(row.parameters),
     header: "Alarm",
     enableSorting: true,
     enableColumnFilter: true,

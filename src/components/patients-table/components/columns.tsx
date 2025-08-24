@@ -1,10 +1,13 @@
 import type { Parameter, Patient } from "@/modules/patient/types/patient";
 import { formatDate } from "@/utils/date";
 import type { ColumnDef } from "@tanstack/react-table";
+
+import { Actions } from "../../actions";
 import { Badge } from "../../ui/badge";
 
 const patientHasAlarm = (parameters: Parameter[]) => {
-  return parameters.some((p) => p.alarm);
+  if (!parameters || !Array.isArray(parameters)) return false;
+  return parameters.some((p) => p.alarm === true);
 };
 
 export const columns: ColumnDef<Patient>[] = [
@@ -43,6 +46,17 @@ export const columns: ColumnDef<Patient>[] = [
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
     },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.sex === "M" ? (
+            <Badge className="rounded-full bg-blue-400 text-white">M</Badge>
+          ) : (
+            <Badge className="rounded-full bg-red-400 text-white">F</Badge>
+          )}
+        </div>
+      );
+    },
   },
   {
     accessorKey: "parameters",
@@ -59,7 +73,7 @@ export const columns: ColumnDef<Patient>[] = [
     header: "Alarm",
     enableSorting: true,
     enableColumnFilter: true,
-    filterFn: (row, value) => {
+    filterFn: (row, _id, value) => {
       const hasAlarm = patientHasAlarm(row.original.parameters);
       if (value === "true") return hasAlarm;
       if (value === "false") return !hasAlarm;
@@ -75,6 +89,15 @@ export const columns: ColumnDef<Patient>[] = [
           )}
         </div>
       );
+    },
+  },
+  {
+    accessorKey: "actions",
+    header: "Actions",
+    enableSorting: false,
+    enableColumnFilter: false,
+    cell: ({ row }) => {
+      return <Actions patient={row.original} />;
     },
   },
 ];

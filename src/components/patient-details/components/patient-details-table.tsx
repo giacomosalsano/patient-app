@@ -1,11 +1,9 @@
 import {
   flexRender,
   getCoreRowModel,
-  getFilteredRowModel,
   getSortedRowModel,
   useReactTable,
   type ColumnDef,
-  type ColumnFiltersState,
   type SortingState,
 } from "@tanstack/react-table";
 import { useState } from "react";
@@ -19,58 +17,31 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ArrowUpDown } from "lucide-react";
-import { Filters } from "./filters";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function DataTable<TData, TValue>({
+export function PatientDetailsTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [globalFilter, setGlobalFilter] = useState("");
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    onGlobalFilterChange: setGlobalFilter,
-    globalFilterFn: (row, _columnId, filterValue) => {
-      const patient = row.original as any;
-      const searchValue = filterValue.toLowerCase();
-
-      const matches =
-        (patient.givenName?.toLowerCase() || "").includes(searchValue) ||
-        (patient.familyName?.toLowerCase() || "").includes(searchValue) ||
-        (patient.id?.toString() || "").includes(searchValue);
-
-      return matches;
-    },
     state: {
       sorting,
-      columnFilters,
-      globalFilter,
     },
   });
 
   return (
     <div className="space-y-4">
-      <Filters
-        globalFilter={globalFilter}
-        setGlobalFilter={setGlobalFilter}
-        table={table}
-        setColumnFilters={setColumnFilters}
-        setSorting={setSorting}
-      />
-
       <div className="overflow-hidden rounded-md border">
         <Table>
           <TableHeader>
@@ -137,7 +108,7 @@ export function DataTable<TData, TValue>({
       <div className="text-muted-foreground flex items-center justify-end text-sm">
         <div>
           Showing {table.getFilteredRowModel().rows.length} of{" "}
-          {table.getRowModel().rows.length} patients
+          {table.getRowModel().rows.length} parameters
         </div>
       </div>
     </div>

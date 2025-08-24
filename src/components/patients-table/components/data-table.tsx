@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 
+import { AddPatientAction } from "@/components/actions/add-patient";
 import { Filters } from "@/components/patients-table/components/filters";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
@@ -26,12 +27,14 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   loading: boolean;
+  onPatientAdded?: () => void;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   loading,
+  onPatientAdded,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -81,14 +84,17 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <Filters
-        globalFilter={globalFilter}
-        setGlobalFilter={setGlobalFilter}
-        table={table}
-        setColumnFilters={setColumnFilters}
-        setSorting={setSorting}
-        loading={loading}
-      />
+      <div className="grid grid-cols-[3fr_1fr] items-center justify-between gap-4">
+        <Filters
+          globalFilter={globalFilter}
+          setGlobalFilter={setGlobalFilter}
+          table={table}
+          setColumnFilters={setColumnFilters}
+          setSorting={setSorting}
+          loading={loading}
+        />
+        <AddPatientAction onPatientAdded={onPatientAdded} />
+      </div>
 
       <div className="overflow-hidden rounded-md border">
         <Table>

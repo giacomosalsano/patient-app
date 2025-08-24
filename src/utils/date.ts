@@ -5,3 +5,10 @@ export function formatDate(date: string) {
     year: "numeric",
   });
 }
+
+export function formatAge(date: string) {
+  const today = new Date();
+  const birthDate = new Date(date);
+  const age = today.getFullYear() - birthDate.getFullYear();
+  return age;
+}

@@ -19,6 +19,7 @@ function App() {
           data={patients as Patient[]}
           loading={loading}
           onPatientUpdated={() => handlers.handleGetPatients({ props: {} })}
+          onPatientAdded={() => handlers.handleGetPatients({ props: {} })}
         />
       </div>
     </>

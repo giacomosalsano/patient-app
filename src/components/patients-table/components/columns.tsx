@@ -3,7 +3,7 @@ import {
   type Parameter,
   type Patient,
 } from "@/modules/patient/types";
-import { formatDate } from "@/utils/date";
+import { formatAge, formatDate } from "@/utils/date";
 import type { ColumnDef } from "@tanstack/react-table";
 
 import { EditPatientAction } from "@/components/actions/edit-patient-action";
@@ -43,7 +43,14 @@ export const createColumns = (
     enableSorting: true,
     enableColumnFilter: false,
     cell: ({ row }) => {
-      return <div>{formatDate(row.original.birthDate)}</div>;
+      return (
+        <div className="flex flex-col gap-1">
+          <div>{formatDate(row.original.birthDate)}</div>
+          <div className="text-xs text-gray-500">
+            {formatAge(row.original.birthDate)} years old
+          </div>
+        </div>
+      );
     },
   },
   {

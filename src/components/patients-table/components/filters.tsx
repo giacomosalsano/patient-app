@@ -7,7 +7,7 @@ import type {
   SortingState,
   Table,
 } from "@tanstack/react-table";
-import { Filter, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { useMemo } from "react";
 
 interface FiltersProps {
@@ -63,58 +63,51 @@ export function Filters({
   }
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <div className="flex flex-1 items-center space-x-2">
-        <div className="relative max-w-sm flex-1">
-          <Search className="text-muted-foreground absolute top-2.5 left-2 h-4 w-4" />
-          <Input
-            placeholder="Filter by name..."
-            value={globalFilter ?? ""}
-            onChange={(event) => setGlobalFilter(event.target.value)}
-            className="pl-8"
-          />
-        </div>
+    <div className="flex flex-row items-center gap-4">
+      <div className="relative min-w-md">
+        <Search className="text-muted-foreground absolute top-2.5 left-2 h-4 w-4" />
+        <Input
+          placeholder="Filter by name..."
+          value={globalFilter ?? ""}
+          onChange={(event) => setGlobalFilter(event.target.value)}
+          className="pl-8"
+        />
       </div>
 
-      <div className="flex items-center space-x-2">
-        <Filter className="text-muted-foreground h-4 w-4" />
-        <SelectComponent
-          value={(table.getColumn("sex")?.getFilterValue() as string) || ""}
-          onValueChange={(value) => {
-            table
-              .getColumn("sex")
-              ?.setFilterValue(value === "all" ? "" : value);
-          }}
-          defaultValue="all"
-          placeholder="Sex"
-          triggerClassName="w-[120px]"
-          items={sexSelectItems}
-        />
+      <SelectComponent
+        value={(table.getColumn("sex")?.getFilterValue() as string) || ""}
+        onValueChange={(value) => {
+          table.getColumn("sex")?.setFilterValue(value === "all" ? "" : value);
+        }}
+        defaultValue="all"
+        placeholder="Sex"
+        triggerClassName="w-[120px]"
+        items={sexSelectItems}
+      />
 
-        <SelectComponent
-          value={(table.getColumn("alarm")?.getFilterValue() as string) || ""}
-          onValueChange={(value) => {
-            table
-              .getColumn("alarm")
-              ?.setFilterValue(value === "all" ? "" : value);
-          }}
-          defaultValue="all"
-          placeholder="Alarm"
-          triggerClassName="w-[120px]"
-          items={alarmSelectItems}
-        />
+      <SelectComponent
+        value={(table.getColumn("alarm")?.getFilterValue() as string) || ""}
+        onValueChange={(value) => {
+          table
+            .getColumn("alarm")
+            ?.setFilterValue(value === "all" ? "" : value);
+        }}
+        defaultValue="all"
+        placeholder="Alarm"
+        triggerClassName="w-[120px]"
+        items={alarmSelectItems}
+      />
 
-        <Button
-          variant="outline"
-          onClick={() => {
-            setGlobalFilter("");
-            setColumnFilters([]);
-            setSorting([]);
-          }}
-        >
-          Clear Filters
-        </Button>
-      </div>
+      <Button
+        variant="outline"
+        onClick={() => {
+          setGlobalFilter("");
+          setColumnFilters([]);
+          setSorting([]);
+        }}
+      >
+        Clear Filters
+      </Button>
     </div>
   );
 }

@@ -1,11 +1,11 @@
-import type { Patient } from "./patient";
+import type { Patient, PatientSex } from "./patient";
 
 export interface AddPatientProps {
   id: number;
   familyName: string;
   givenName: string;
   birthDate: string;
-  sex: string;
+  sex: PatientSex;
   parameters: {
     id: number;
     name: string;

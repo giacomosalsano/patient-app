@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
 import type {
   ColumnFiltersState,
   SortingState,
@@ -20,6 +21,7 @@ interface FiltersProps {
   table: Table<any>;
   setColumnFilters: (value: ColumnFiltersState) => void;
   setSorting: (value: SortingState) => void;
+  loading?: boolean;
 }
 
 export function Filters({
@@ -28,7 +30,27 @@ export function Filters({
   table,
   setColumnFilters,
   setSorting,
+  loading = false,
 }: FiltersProps) {
+  if (loading) {
+    return (
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-1 items-center space-x-2">
+          <div className="relative max-w-sm flex-1">
+            <Skeleton className="h-10 w-full" />
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <Skeleton className="h-4 w-4" />
+          <Skeleton className="h-10 w-[120px]" />
+          <Skeleton className="h-10 w-[120px]" />
+          <Skeleton className="h-10 w-[100px]" />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex flex-1 items-center space-x-2">

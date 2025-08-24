@@ -10,8 +10,8 @@ import {
 import type { Patient } from "@/modules/patient/types/patient";
 import { EyeIcon } from "lucide-react";
 
-import { columns } from "@/components/patient-details/components/columns";
-import { PatientDetailsTable } from "@/components/patient-details/components/patient-details-table";
+import { columns } from "@/components/actions/patient-details/components/columns";
+import { PatientDetailsTable } from "@/components/actions/patient-details/components/patient-details-table";
 import { PatientInfoBox } from "@/components/patient-info-box";
 
 interface PatientDetailsProps {

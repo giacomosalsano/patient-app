@@ -1,8 +1,14 @@
-import type { Parameter, Patient } from "@/modules/patient/types/patient";
+import {
+  PatientSex,
+  type Parameter,
+  type Patient,
+} from "@/modules/patient/types/patient";
 import { formatDate } from "@/utils/date";
 import type { ColumnDef } from "@tanstack/react-table";
 
-import { Actions } from "../../actions";
+import { EditPatientAction } from "@/components/actions/edit-patient-action";
+import { PatientDetails } from "@/components/actions/patient-details";
+
 import { Badge } from "../../ui/badge";
 
 const patientHasAlarm = (parameters: Parameter[]) => {
@@ -49,7 +55,7 @@ export const columns: ColumnDef<Patient>[] = [
     cell: ({ row }) => {
       return (
         <div>
-          {row.original.sex === "M" ? (
+          {row.original.sex === PatientSex.MALE ? (
             <Badge className="rounded-full bg-blue-400 text-white">M</Badge>
           ) : (
             <Badge className="rounded-full bg-red-400 text-white">F</Badge>
@@ -97,7 +103,12 @@ export const columns: ColumnDef<Patient>[] = [
     enableSorting: false,
     enableColumnFilter: false,
     cell: ({ row }) => {
-      return <Actions patient={row.original} />;
+      return (
+        <div className="flex justify-center gap-2">
+          <PatientDetails patient={row.original} />
+          <EditPatientAction patient={row.original} />
+        </div>
+      );
     },
   },
 ];

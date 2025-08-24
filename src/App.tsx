@@ -4,7 +4,7 @@ import { usePatient } from "./modules/patient/hooks/use-patient";
 import type { Patient } from "./modules/patient/types/patient";
 
 function App() {
-  const { handlers, patients } = usePatient();
+  const { handlers, patients, loading } = usePatient();
 
   useEffect(() => {
     handlers.handleGetPatients({
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <div className="flex flex-col gap-4">
-        <PatientsTable data={patients as Patient[]} />
+        <PatientsTable data={patients as Patient[]} loading={loading} />
       </div>
     </>
   );

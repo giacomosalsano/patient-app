@@ -1,4 +1,4 @@
-import type { Patient } from "@/modules/patient/types/patient";
+import { PatientSex, type Patient } from "@/modules/patient/types/patient";
 import { formatDate } from "@/utils/date";
 import { Badge } from "../ui/badge";
 import { Card, CardContent, CardTitle } from "../ui/card";
@@ -24,7 +24,7 @@ export const PatientInfoBox = ({ patient }: PatientInfoBoxProps) => {
             <p>{formatDate(patient.birthDate)}</p>
           </div>
           <div className="flex flex-row items-center justify-center gap-1">
-            {patient.sex === "M" ? (
+            {patient.sex === PatientSex.MALE ? (
               <Badge className="rounded-full bg-blue-400 text-white">M</Badge>
             ) : (
               <Badge className="rounded-full bg-red-400 text-white">F</Badge>

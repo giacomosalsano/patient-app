@@ -8,6 +8,7 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
   TableBody,
@@ -21,11 +22,13 @@ import { ArrowUpDown } from "lucide-react";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  loading?: boolean;
 }
 
 export function PatientDetailsTable<TData, TValue>({
   columns,
   data,
+  loading = false,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -39,6 +42,22 @@ export function PatientDetailsTable<TData, TValue>({
       sorting,
     },
   });
+
+  // Render skeleton rows when loading
+  const renderSkeletonRows = () => {
+    return Array.from({ length: 3 }).map((_, index) => (
+      <TableRow key={`skeleton-${index}`}>
+        {Array.from({ length: columns.length }).map((_, cellIndex) => (
+          <TableCell
+            key={`skeleton-cell-${index}-${cellIndex}`}
+            className="text-center"
+          >
+            <Skeleton className="mx-auto h-4 w-20" />
+          </TableCell>
+        ))}
+      </TableRow>
+    ));
+  };
 
   return (
     <div className="space-y-4">
@@ -75,7 +94,9 @@ export function PatientDetailsTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {loading ? (
+              renderSkeletonRows()
+            ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
@@ -107,8 +128,14 @@ export function PatientDetailsTable<TData, TValue>({
 
       <div className="text-muted-foreground flex items-center justify-end text-sm">
         <div>
-          Showing {table.getFilteredRowModel().rows.length} of{" "}
-          {table.getRowModel().rows.length} parameters
+          {loading ? (
+            <Skeleton className="h-4 w-32" />
+          ) : (
+            <>
+              Showing {table.getFilteredRowModel().rows.length} of{" "}
+              {table.getRowModel().rows.length} parameters
+            </>
+          )}
         </div>
       </div>
     </div>

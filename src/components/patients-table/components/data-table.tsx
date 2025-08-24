@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 
+import { Filters } from "@/components/patients-table/components/filters";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
@@ -20,7 +21,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ArrowUpDown } from "lucide-react";
-import { Filters } from "./filters";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

@@ -4,7 +4,7 @@ import { SelectComponent } from "@/components/ui/components/select-component";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { usePatient } from "@/modules/patient/hooks/use-patient";
-import { PatientSex, type Patient } from "@/modules/patient/types/patient";
+import { PatientSex, type Patient } from "@/modules/patient/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EditIcon, Loader2 } from "lucide-react";
 import { useCallback, useMemo } from "react";
@@ -13,6 +13,7 @@ import { z } from "zod";
 
 interface EditPatientActionProps {
   patient: Patient;
+  onPatientUpdated?: () => void;
 }
 
 const formSchema = z.object({
@@ -27,7 +28,10 @@ const formSchema = z.object({
 
 type FormSchemaType = z.infer<typeof formSchema>;
 
-export const EditPatientAction = ({ patient }: EditPatientActionProps) => {
+export const EditPatientAction = ({
+  patient,
+  onPatientUpdated,
+}: EditPatientActionProps) => {
   const {
     handlers: { handleUpdatePatient },
     loading,
@@ -50,7 +54,7 @@ export const EditPatientAction = ({ patient }: EditPatientActionProps) => {
     );
   }, []);
 
-  const selectItems = useMemo(() => {
+  const sexSelectItems = useMemo(() => {
     return [
       { value: PatientSex.MALE, label: "Male" },
       { value: PatientSex.FEMALE, label: "Female" },
@@ -63,6 +67,7 @@ export const EditPatientAction = ({ patient }: EditPatientActionProps) => {
     },
     [form],
   );
+
   const editPatientDialogContent = useMemo(() => {
     return (
       <div className="my-4 flex w-full flex-col gap-4 space-y-4">
@@ -92,13 +97,13 @@ export const EditPatientAction = ({ patient }: EditPatientActionProps) => {
               defaultValue={patient.sex as PatientSex}
               placeholder={patient.sex as PatientSex}
               triggerClassName="w-full"
-              items={selectItems}
+              items={sexSelectItems}
             />
           </div>
         </div>
       </div>
     );
-  }, [form, patient, selectItems, onSexSelectValueChange]);
+  }, [form, patient, sexSelectItems, onSexSelectValueChange]);
 
   const handleSubmitFormOnClick = useCallback(() => {
     form.handleSubmit((data: FormSchemaType) => {
@@ -112,10 +117,12 @@ export const EditPatientAction = ({ patient }: EditPatientActionProps) => {
           form.reset();
           const dialogTrigger = document.querySelector('[data-state="open"]');
           if (dialogTrigger) (dialogTrigger as HTMLElement).click();
+
+          onPatientUpdated && onPatientUpdated();
         },
       });
     })();
-  }, [form, handleUpdatePatient]);
+  }, [form, handleUpdatePatient, onPatientUpdated]);
 
   const editPatientDialogFooter = useMemo(() => {
     return (
@@ -135,7 +142,7 @@ export const EditPatientAction = ({ patient }: EditPatientActionProps) => {
         </Button>
       </div>
     );
-  }, [loading, form, handleSubmitFormOnClick]);
+  }, [loading, handleSubmitFormOnClick]);
 
   return (
     <>

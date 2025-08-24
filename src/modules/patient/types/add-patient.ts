@@ -1,4 +1,4 @@
-import type { Patient, PatientSex } from "./patient";
+import type { Patient, PatientSex } from "@/modules/patient/types/patient";
 
 export interface AddPatientProps {
   id: number;

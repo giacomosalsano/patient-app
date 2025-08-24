@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import type { Parameter } from "@/modules/patient/types/patient";
+import type { Parameter } from "@/modules/patient/types";
 import type { ColumnDef } from "@tanstack/react-table";
 
 export const columns: ColumnDef<Parameter>[] = [

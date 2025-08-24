@@ -1,4 +1,4 @@
-import { PatientSex, type Patient } from "@/modules/patient/types/patient";
+import { PatientSex, type Patient } from "@/modules/patient/types";
 import { formatDate } from "@/utils/date";
 import { useMemo } from "react";
 

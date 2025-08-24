@@ -43,7 +43,6 @@ export function PatientDetailsTable<TData, TValue>({
     },
   });
 
-  // Render skeleton rows when loading
   const renderSkeletonRows = () => {
     return Array.from({ length: 3 }).map((_, index) => (
       <TableRow key={`skeleton-${index}`}>

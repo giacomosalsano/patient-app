@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import type { Patient } from "@/modules/patient/types/patient";
+import type { Patient } from "@/modules/patient/types";
 import { EyeIcon } from "lucide-react";
 
 import { columns } from "@/components/actions/patient-details/components/columns";

@@ -1,6 +1,6 @@
 import type { AxiosResponse } from "axios";
 
-import { apiClient } from "./config";
+import { apiClient } from "@/core/services/api/config";
 
 type RequestProps = {
   url: string;

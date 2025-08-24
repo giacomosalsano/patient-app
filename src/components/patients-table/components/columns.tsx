@@ -2,21 +2,23 @@ import {
   PatientSex,
   type Parameter,
   type Patient,
-} from "@/modules/patient/types/patient";
+} from "@/modules/patient/types";
 import { formatDate } from "@/utils/date";
 import type { ColumnDef } from "@tanstack/react-table";
 
 import { EditPatientAction } from "@/components/actions/edit-patient-action";
 import { PatientDetails } from "@/components/actions/patient-details";
 
-import { Badge } from "../../ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 const patientHasAlarm = (parameters: Parameter[]) => {
   if (!parameters || !Array.isArray(parameters)) return false;
   return parameters.some((p) => p.alarm === true);
 };
 
-export const columns: ColumnDef<Patient>[] = [
+export const createColumns = (
+  onPatientUpdated?: () => void,
+): ColumnDef<Patient>[] => [
   {
     accessorKey: "id",
     header: "ID",
@@ -106,9 +108,14 @@ export const columns: ColumnDef<Patient>[] = [
       return (
         <div className="flex justify-center gap-2">
           <PatientDetails patient={row.original} />
-          <EditPatientAction patient={row.original} />
+          <EditPatientAction
+            patient={row.original}
+            onPatientUpdated={onPatientUpdated}
+          />
         </div>
       );
     },
   },
 ];
+
+export const columns = createColumns();

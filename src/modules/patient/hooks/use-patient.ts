@@ -1,26 +1,25 @@
-import { isAxiosError, type AxiosError } from "axios";
-import { useCallback, useState } from "react";
-import { toast } from "sonner";
 import {
   addPatient,
   listPatientById,
   listPatients,
   updatePatient,
-} from "../service/patientService";
-import type { AddPatientProps, AddPatientResponse } from "../types/add-patient";
+} from "@/modules/patient/service/patientService";
+
 import type {
+  AddPatientProps,
+  AddPatientResponse,
   ListPatientByIdProps,
   ListPatientByIdResponse,
-} from "../types/list-patient-by-id";
-import type {
   ListPatientProps,
   ListPatientResponse,
-} from "../types/list-patients";
-import type { Patient } from "../types/patient";
-import type {
+  Patient,
   UpdatePatientProps,
   UpdatePatientResponse,
-} from "../types/update-patient";
+} from "@/modules/patient/types";
+
+import { isAxiosError, type AxiosError } from "axios";
+import { useCallback, useState } from "react";
+import { toast } from "sonner";
 
 type Handler<T, R = void> = {
   props: T;

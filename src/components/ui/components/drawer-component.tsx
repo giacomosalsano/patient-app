@@ -5,7 +5,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../drawer";
+} from "@/components/ui/drawer";
 
 interface DrawerComponentProps {
   trigger: React.ReactNode;

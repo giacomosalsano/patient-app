@@ -1,14 +1,13 @@
 import { request } from "@/core/services/api/request";
 import type {
+  AddPatientProps,
+  AddPatientResponse,
   ListPatientByIdProps,
   ListPatientByIdResponse,
-} from "@/modules/patient/types/list-patient-by-id";
-import type { ListPatientResponse } from "@/modules/patient/types/list-patients";
-import type { AddPatientProps, AddPatientResponse } from "../types/add-patient";
-import type {
+  ListPatientResponse,
   UpdatePatientProps,
   UpdatePatientResponse,
-} from "../types/update-patient";
+} from "@/modules/patient/types";
 
 const module = "/Patient";
 

@@ -1,2 +1,1 @@
-export { apiClient } from "./config";
-export * from "./patients";
+export { apiClient } from "@/core/services/api/config";

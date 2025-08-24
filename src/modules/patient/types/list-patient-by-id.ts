@@ -1,4 +1,4 @@
-import type { Patient } from "./patient";
+import type { Patient } from "@/modules/patient/types/patient";
 
 export interface ListPatientByIdProps {
   id: number;

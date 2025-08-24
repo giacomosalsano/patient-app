@@ -1,12 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { SelectComponent } from "@/components/ui/components/select-component";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import type {
   ColumnFiltersState,
@@ -14,6 +8,7 @@ import type {
   Table,
 } from "@tanstack/react-table";
 import { Filter, Search } from "lucide-react";
+import { useMemo } from "react";
 
 interface FiltersProps {
   globalFilter: string;
@@ -32,6 +27,22 @@ export function Filters({
   setSorting,
   loading = false,
 }: FiltersProps) {
+  const sexSelectItems = useMemo(() => {
+    return [
+      { value: "all", label: "All" },
+      { value: "M", label: "Male" },
+      { value: "F", label: "Female" },
+    ];
+  }, []);
+
+  const alarmSelectItems = useMemo(() => {
+    return [
+      { value: "all", label: "All" },
+      { value: "true", label: "With Alarm" },
+      { value: "false", label: "Without Alarm" },
+    ];
+  }, []);
+
   if (loading) {
     return (
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -67,41 +78,31 @@ export function Filters({
 
       <div className="flex items-center space-x-2">
         <Filter className="text-muted-foreground h-4 w-4" />
-        <Select
-          value={(table.getColumn("sex")?.getFilterValue() as string) ?? ""}
+        <SelectComponent
+          value={(table.getColumn("sex")?.getFilterValue() as string) || ""}
           onValueChange={(value) => {
             table
               .getColumn("sex")
               ?.setFilterValue(value === "all" ? "" : value);
           }}
-        >
-          <SelectTrigger className="w-[120px]">
-            <SelectValue placeholder="Sex" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All</SelectItem>
-            <SelectItem value="M">Male</SelectItem>
-            <SelectItem value="F">Female</SelectItem>
-          </SelectContent>
-        </Select>
+          defaultValue="all"
+          placeholder="Sex"
+          triggerClassName="w-[120px]"
+          items={sexSelectItems}
+        />
 
-        <Select
-          value={(table.getColumn("alarm")?.getFilterValue() as string) ?? ""}
+        <SelectComponent
+          value={(table.getColumn("alarm")?.getFilterValue() as string) || ""}
           onValueChange={(value) => {
             table
               .getColumn("alarm")
               ?.setFilterValue(value === "all" ? "" : value);
           }}
-        >
-          <SelectTrigger className="w-[120px]">
-            <SelectValue placeholder="Alarm" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All</SelectItem>
-            <SelectItem value="true">With Alarm</SelectItem>
-            <SelectItem value="false">Without Alarm</SelectItem>
-          </SelectContent>
-        </Select>
+          defaultValue="all"
+          placeholder="Alarm"
+          triggerClassName="w-[120px]"
+          items={alarmSelectItems}
+        />
 
         <Button
           variant="outline"

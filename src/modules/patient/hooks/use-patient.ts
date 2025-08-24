@@ -157,7 +157,7 @@ export function usePatient() {
       try {
         const { data } = await updatePatient(props);
 
-        toast.success("Updating patient successfully");
+        toast.success("Patient updated successfully");
 
         if (onSuccess) {
           onSuccess(data);

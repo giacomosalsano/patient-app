@@ -1,17 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { DialogComponent } from "@/components/ui/components/dialog-component";
+import { SelectComponent } from "@/components/ui/components/select-component";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { usePatient } from "@/modules/patient/hooks/use-patient";
 import { PatientSex, type Patient } from "@/modules/patient/types/patient";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Select } from "@radix-ui/react-select";
 import { EditIcon, Loader2 } from "lucide-react";
 import { useCallback, useMemo } from "react";
 import { useForm } from "react-hook-form";
@@ -56,6 +50,19 @@ export const EditPatientAction = ({ patient }: EditPatientActionProps) => {
     );
   }, []);
 
+  const selectItems = useMemo(() => {
+    return [
+      { value: PatientSex.MALE, label: "Male" },
+      { value: PatientSex.FEMALE, label: "Female" },
+    ];
+  }, []);
+
+  const onSexSelectValueChange = useCallback(
+    (value: string) => {
+      form.setValue("sex", value as PatientSex);
+    },
+    [form],
+  );
   const editPatientDialogContent = useMemo(() => {
     return (
       <div className="my-4 flex w-full flex-col gap-4 space-y-4">
@@ -79,26 +86,19 @@ export const EditPatientAction = ({ patient }: EditPatientActionProps) => {
         <div className="flex w-full flex-row justify-between gap-2">
           <div className="flex w-full flex-col gap-2">
             <Label>Sex</Label>
-            <Select
+            <SelectComponent
               value={form.watch("sex")}
-              onValueChange={(value) =>
-                form.setValue("sex", value as PatientSex)
-              }
+              onValueChange={onSexSelectValueChange}
               defaultValue={patient.sex as PatientSex}
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder={patient.sex as PatientSex} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value={PatientSex.MALE}>Male</SelectItem>
-                <SelectItem value={PatientSex.FEMALE}>Female</SelectItem>
-              </SelectContent>
-            </Select>
+              placeholder={patient.sex as PatientSex}
+              triggerClassName="w-full"
+              items={selectItems}
+            />
           </div>
         </div>
       </div>
     );
-  }, [form, patient]);
+  }, [form, patient, selectItems, onSexSelectValueChange]);
 
   const handleSubmitFormOnClick = useCallback(() => {
     form.handleSubmit((data: FormSchemaType) => {
@@ -150,7 +150,11 @@ export const EditPatientAction = ({ patient }: EditPatientActionProps) => {
           children={editPatientDialogContent}
           footer={editPatientDialogFooter}
           closeButton={
-            <Button type="button" variant="outline" onClick={() => form.reset()}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => form.reset()}
+            >
               Cancel
             </Button>
           }

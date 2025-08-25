@@ -65,9 +65,9 @@ export const createColumns = (
       return (
         <div>
           {row.original.sex === PatientSex.MALE ? (
-            <Badge className="rounded-full bg-blue-400 text-white">M</Badge>
+            <Badge className="bg-male rounded-full text-white">M</Badge>
           ) : (
-            <Badge className="rounded-full bg-red-400 text-white">F</Badge>
+            <Badge className="bg-female rounded-full text-white">F</Badge>
           )}
         </div>
       );
@@ -98,9 +98,9 @@ export const createColumns = (
       return (
         <div>
           {patientHasAlarm(row.original.parameters) ? (
-            <Badge variant="destructive">Yes</Badge>
+            <Badge className="bg-alarm rounded-full text-white">Yes</Badge>
           ) : (
-            <Badge variant="secondary">No</Badge>
+            <Badge className="bg-no-alarm rounded-full text-white">No</Badge>
           )}
         </div>
       );

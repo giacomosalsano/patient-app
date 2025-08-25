@@ -9,25 +9,31 @@ import {
 interface CardComponentProps {
   title?: string;
   description?: string;
-  children: React.ReactNode;
+  cardContent: React.ReactNode;
+  cardHeader?: React.ReactNode;
 }
 
 export function CardComponent({
   title,
   description,
-  children,
+  cardContent,
+  cardHeader,
 }: CardComponentProps) {
   return (
     <Card className="w-full">
-      <CardHeader>
-        {title && (
-          <CardTitle className="flex flex-row items-center justify-center gap-2 text-center text-lg font-bold">
-            {title}
-          </CardTitle>
-        )}
-        {description && <CardDescription>{description}</CardDescription>}
-      </CardHeader>
-      <CardContent>{children}</CardContent>
+      {cardHeader ? (
+        cardHeader
+      ) : (title || description) ? (
+        <CardHeader>
+          {title && (
+            <CardTitle className="flex flex-row items-center justify-center gap-2 text-center text-lg font-bold">
+              {title}
+            </CardTitle>
+          )}
+          {description && <CardDescription>{description}</CardDescription>}
+        </CardHeader>
+      ) : null}
+      <CardContent>{cardContent}</CardContent>
     </Card>
   );
 }

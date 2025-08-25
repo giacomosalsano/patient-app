@@ -19,6 +19,12 @@ export default function PatientsTable({
 
   return (
     <div className="container mx-auto py-10">
+      <div className="mb-8 flex flex-col gap-2">
+        <h2 className="text-3xl font-bold tracking-tight">Table</h2>
+        <p className="text-muted-foreground">
+          Manage your patients
+        </p>
+      </div>
       <DataTable
         columns={columns}
         data={data as Patient[]}

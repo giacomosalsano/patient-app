@@ -30,9 +30,9 @@ export const columns: ColumnDef<Parameter>[] = [
       return (
         <div>
           {row.original.alarm ? (
-            <Badge variant="destructive">Yes</Badge>
+            <Badge className="rounded-full bg-alarm text-white">Yes</Badge>
           ) : (
-            <Badge variant="secondary">No</Badge>
+            <Badge className="rounded-full bg-no-alarm text-white">No</Badge>
           )}
         </div>
       );

@@ -23,9 +23,9 @@ export const PatientInfoBox = ({ patient }: PatientInfoBoxProps) => {
         </div>
         <div className="flex flex-row items-center justify-center gap-1">
           {patient.sex === PatientSex.MALE ? (
-            <Badge className="rounded-full bg-blue-400 text-white">M</Badge>
+            <Badge className="rounded-full bg-male text-white">M</Badge>
           ) : (
-            <Badge className="rounded-full bg-red-400 text-white">F</Badge>
+            <Badge className="rounded-full bg-female text-white">F</Badge>
           )}
         </div>
       </div>
@@ -35,7 +35,7 @@ export const PatientInfoBox = ({ patient }: PatientInfoBoxProps) => {
   return (
     <CardComponent
       title={`${patient.givenName} ${patient.familyName}`}
-      children={patientInfoBoxContent}
+      cardContent={patientInfoBoxContent}
     />
   );
 };

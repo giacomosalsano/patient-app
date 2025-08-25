@@ -314,32 +314,25 @@ export const AddPatientAction = ({
   }, [loading, form, handleSubmitForm]);
 
   return (
-    <>
-      <form
-        onSubmit={form.handleSubmit(handleSubmitForm)}
-        className="flex flex-col gap-4"
-      >
-        <DialogComponent
-          trigger={addPatientDialogTrigger}
-          title="Add Patient"
-          description="Add patient information"
-          children={addPatientDialogContent}
-          footer={addPatientDialogFooter}
-          closeButton={
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => {
-                form.reset();
-                setParameters([]);
-                setSelectedSex("");
-              }}
-            >
-              Cancel
-            </Button>
-          }
-        />
-      </form>
-    </>
+    <DialogComponent
+      trigger={addPatientDialogTrigger}
+      title="Add Patient"
+      description="Add patient information"
+      children={addPatientDialogContent}
+      footer={addPatientDialogFooter}
+      closeButton={
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => {
+            form.reset();
+            setParameters([]);
+            setSelectedSex("");
+          }}
+        >
+          Cancel
+        </Button>
+      }
+    />
   );
 };

@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { DialogComponent } from "@/components/ui/components/dialog-component";
 import { SelectComponent } from "@/components/ui/components/select-component";
-import { TooltipComponent } from "@/components/ui/components/tooltip-component";
 import { DialogClose } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -53,9 +52,7 @@ export const EditPatientAction = ({
   const editPatientDialogTrigger = useMemo(() => {
     return (
       <Button variant="outline" size="sm">
-        <TooltipComponent content="Edit patient">
-          <EditIcon className="h-4 w-4" />
-        </TooltipComponent>
+        <EditIcon className="h-4 w-4" />
       </Button>
     );
   }, []);

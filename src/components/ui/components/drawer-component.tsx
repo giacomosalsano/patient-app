@@ -28,9 +28,7 @@ export function DrawerComponent({
           <DrawerTitle>{title}</DrawerTitle>
           <DrawerDescription>{description}</DrawerDescription>
         </DrawerHeader>
-        <div className="flex min-w-6xl flex-col gap-4 space-y-4 overflow-y-auto px-4 pb-4 text-center">
-          {children}
-        </div>
+        {children}
       </DrawerContent>
     </Drawer>
   );

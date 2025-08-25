@@ -2,7 +2,7 @@ import { AgeChart } from "@/components/charts/components/age-chart";
 import { AlarmChart } from "@/components/charts/components/alarm-chart";
 import { CardComponent } from "@/components/ui/components/card-component";
 import type { Patient } from "@/modules/patient/types";
-import { formatAge, formatDate } from "@/utils/date";
+import { formatAge } from "@/utils/date";
 import {
   Activity,
   AlertTriangle,
@@ -11,95 +11,11 @@ import {
   Users,
 } from "lucide-react";
 import { useMemo } from "react";
-import { Separator } from "../ui/separator";
+import { RecentActivity } from "./components/recent-activity";
 
 interface ChartsProps {
   patients: Patient[];
 }
-
-const mockPatientsAdded = [
-  {
-    id: 1,
-    name: "Luca Bianchi",
-    addedAt: "2025-08-20",
-  },
-  {
-    id: 2,
-    name: "Giulia Romano",
-    addedAt: "2025-08-21",
-  },
-  {
-    id: 3,
-    name: "Marco Conti",
-    addedAt: "2025-08-22",
-  },
-  {
-    id: 4,
-    name: "Sofia Greco",
-    addedAt: "2025-08-23",
-  },
-  {
-    id: 5,
-    name: "Alessandro Esposito",
-    addedAt: "2025-08-24",
-  },
-];
-
-const mockAlarmsTriggered = [
-  {
-    id: 1,
-    name: "Federica Cioni",
-    triggeredAt: "2025-08-20",
-  },
-  {
-    id: 2,
-    name: "Claudio Bianchi",
-    triggeredAt: "2025-08-21",
-  },
-  {
-    id: 3,
-    name: "Matteo Rinaldi",
-    triggeredAt: "2025-08-22",
-  },
-  {
-    id: 4,
-    name: "Francesca De Luca",
-    triggeredAt: "2025-08-23",
-  },
-  {
-    id: 5,
-    name: "Davide Ferraro",
-    triggeredAt: "2025-08-24",
-  },
-];
-
-const mockParameterUpdated = [
-  {
-    id: 1,
-    name: "Chiara Moretti",
-    updatedAt: "2025-08-20",
-  },
-  {
-    id: 2,
-    name: "Elena Ricci",
-    updatedAt: "2025-08-21",
-  },
-  {
-    id: 3,
-    name: "Tommaso Gallo",
-    updatedAt: "2025-08-22",
-  },
-  {
-    id: 4,
-    name: "Alessia Benedetti",
-    updatedAt: "2025-08-23",
-  },
-  {
-    id: 5,
-    name: "Federico Barone",
-    updatedAt: "2025-08-24",
-  },
-];
 
 export function Charts({ patients }: ChartsProps) {
   const totalPatientsCardContent = useMemo(() => {
@@ -186,89 +102,8 @@ export function Charts({ patients }: ChartsProps) {
     );
   }, [patients]);
 
-  const recentActivityCardContent = useMemo(() => {
-    return (
-      <div className="space-y-4">
-        <div className="flex flex-col gap-1 py-2">
-          <div className="flex gap-2 lg:items-center">
-            <h1 className="text-lg font-semibold">Recent Activity</h1>
-            <Activity className="text-muted-foreground h-4 w-4" />
-          </div>
-          <p className="text-muted-foreground text-start text-xs lg:text-center">
-            Latest patient updates and alarms
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-6 md:flex-row md:gap-6 lg:flex-row">
-          <div className="flex-1">
-            <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
-              Patient Added
-            </h2>
-            <div className="space-y-2">
-              {mockPatientsAdded.map((patient) => (
-                <div
-                  key={`patient-${patient.id}`}
-                  className="flex items-center gap-3"
-                >
-                  <span className="h-2 w-2 rounded-full bg-green-500" />
-                  <p className="text-muted-foreground text-xs">
-                    {patient.name} — {formatDate(patient.addedAt)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <Separator orientation="horizontal" className="md:hidden" />
-          <Separator orientation="vertical" className="hidden md:block" />
-
-          <div className="flex-1">
-            <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
-              Alarm Triggered
-            </h2>
-            <div className="space-y-2">
-              {mockAlarmsTriggered.map((alarm) => (
-                <div
-                  key={`alarm-${alarm.id}`}
-                  className="flex items-center gap-3"
-                >
-                  <span className="h-2 w-2 rounded-full bg-red-500" />
-                  <p className="text-muted-foreground text-xs">
-                    {alarm.name} — {formatDate(alarm.triggeredAt)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <Separator orientation="horizontal" className="md:hidden" />
-          <Separator orientation="vertical" className="hidden md:block" />
-
-          <div className="flex-1">
-            <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
-              Parameter Updated
-            </h2>
-            <div className="space-y-2">
-              {mockParameterUpdated.map((parameter) => (
-                <div
-                  key={`param-${parameter.id}`}
-                  className="flex items-center gap-3"
-                >
-                  <span className="h-2 w-2 rounded-full bg-blue-500" />
-                  <p className="text-muted-foreground text-xs">
-                    {parameter.name} — {formatDate(parameter.updatedAt)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }, []);
-
   return (
-    <div className="p-4 pb-20 text-center md:w-full lg:pt-10 lg:mx-auto lg:px-0">
+    <div className="p-4 pb-20 text-center md:w-full lg:mx-auto lg:px-8 lg:pt-10">
       <div className="mb-8 flex flex-col gap-2">
         <h2 className="text-3xl font-bold tracking-tight lg:text-3xl">
           Charts
@@ -295,7 +130,7 @@ export function Charts({ patients }: ChartsProps) {
           <AgeChart patients={patients} />
         </div>
 
-        <CardComponent cardContent={recentActivityCardContent} />
+        <RecentActivity />
       </div>
     </div>
   );

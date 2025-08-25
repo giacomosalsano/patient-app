@@ -18,9 +18,9 @@ export default function PatientsTable({
   const columns = createColumns(onPatientUpdated);
 
   return (
-    <div className="p-4 pb-20 text-center md:w-full lg:pt-10 lg:mx-auto lg:px-0">
+    <div className="p-4 pb-20 text-center md:w-full lg:mx-auto lg:px-8 lg:pt-10">
       <div className="mb-8 flex flex-col gap-2">
-        <h2 className="text-3xl font-bold tracking-tight lg:text-3xl">
+        <h2 className="text-3xl font-bold tracking-tight">
           Table
         </h2>
         <p className="text-muted-foreground">

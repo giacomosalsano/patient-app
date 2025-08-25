@@ -3,6 +3,7 @@ import { DialogComponent } from "@/components/ui/components/dialog-component";
 import { SelectComponent } from "@/components/ui/components/select-component";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Skeleton } from "@/components/ui/skeleton";
 import { usePatient } from "@/modules/patient/hooks/use-patient";
 import { PatientSex } from "@/modules/patient/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,6 +14,7 @@ import { z } from "zod";
 
 interface AddPatientActionProps {
   onPatientAdded?: () => void;
+  loading?: boolean;
 }
 
 interface ParameterType {
@@ -35,11 +37,16 @@ const formSchema = z.object({
 
 type FormSchemaType = z.infer<typeof formSchema>;
 
-export const AddPatientAction = ({ onPatientAdded }: AddPatientActionProps) => {
+export const AddPatientAction = ({
+  onPatientAdded,
+  loading: externalLoading,
+}: AddPatientActionProps) => {
   const {
     handlers: { handleAddPatient },
-    loading,
+    loading: internalLoading,
   } = usePatient();
+
+  const loading = externalLoading || internalLoading;
 
   const [parameters, setParameters] = useState<ParameterType[]>([]);
   const [selectedSex, setSelectedSex] = useState<string>("");
@@ -55,6 +62,14 @@ export const AddPatientAction = ({ onPatientAdded }: AddPatientActionProps) => {
   });
 
   const addPatientDialogTrigger = useMemo(() => {
+    if (loading) {
+      return (
+        <div className="flex max-w-fit flex-row justify-end gap-2 self-end">
+          <Skeleton className="h-9 w-32" />
+        </div>
+      );
+    }
+
     return (
       <Button
         size="sm"
@@ -63,7 +78,7 @@ export const AddPatientAction = ({ onPatientAdded }: AddPatientActionProps) => {
         <PlusIcon className="h-4 w-4" /> Add Patient
       </Button>
     );
-  }, []);
+  }, [loading]);
 
   const sexSelectItems = useMemo(() => {
     return [

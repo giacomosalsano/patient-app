@@ -93,7 +93,7 @@ export function DataTable<TData, TValue>({
           setSorting={setSorting}
           loading={loading}
         />
-        <AddPatientAction onPatientAdded={onPatientAdded} />
+        <AddPatientAction onPatientAdded={onPatientAdded} loading={loading} />
       </div>
 
       <div className="overflow-hidden rounded-md border">

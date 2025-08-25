@@ -76,7 +76,7 @@ export const AddPatientAction = ({
         className="flex w-full flex-row gap-2 md:max-w-fit lg:justify-end"
       >
         <PlusIcon className="h-4 w-4" />
-        <span className="block md:hidden">Add Patient</span>
+        <span>Add Patient</span>
       </Button>
     );
   }, [loading]);
@@ -160,7 +160,7 @@ export const AddPatientAction = ({
 
   const addPatientDialogContent = useMemo(() => {
     return (
-      <div className="my-4 flex w-full flex-col gap-4 space-y-4">
+      <div className="my-4 flex w-full max-h-96 flex-col gap-2 space-y-4 overflow-y-auto lg:gap-4">
         <div className="flex flex-col gap-2">
           <Label>Given Name</Label>
           <Input
@@ -317,7 +317,7 @@ export const AddPatientAction = ({
   return (
     <DialogComponent
       dialogContentClassName="lg:min-w-2xl"
-      dialogFooterClassName="lg:flex-row lg:gap-2"
+      dialogFooterClassName="lg:flex-row lg:gap-2 md:flex-col-reverse md:gap-2"
       trigger={addPatientDialogTrigger}
       title="Add Patient"
       description="Add patient information"

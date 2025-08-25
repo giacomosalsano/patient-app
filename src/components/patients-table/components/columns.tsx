@@ -62,15 +62,7 @@ export const createColumns = (
       return value.includes(row.getValue(id));
     },
     cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.sex === PatientSex.MALE ? (
-            <Badge className="bg-male rounded-full text-white">M</Badge>
-          ) : (
-            <Badge className="bg-female rounded-full text-white">F</Badge>
-          )}
-        </div>
-      );
+      return <div>{row.original.sex === PatientSex.MALE ? <p className="text-male">M</p> : <p className="text-female">F</p>}</div>;
     },
   },
   {
@@ -100,7 +92,9 @@ export const createColumns = (
           {patientHasAlarm(row.original.parameters) ? (
             <Badge className="bg-alarm rounded-full text-white">Yes</Badge>
           ) : (
-            <Badge className="bg-no-alarm rounded-full text-white">No</Badge>
+            <Badge variant="secondary" className="rounded-lg">
+              No
+            </Badge>
           )}
         </div>
       );

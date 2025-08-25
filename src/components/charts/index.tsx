@@ -199,7 +199,7 @@ export function Charts({ patients }: ChartsProps) {
           </p>
         </div>
 
-        <div className="flex flex-col gap-6 lg:flex-row">
+        <div className="flex flex-col gap-6 md:flex-row md:gap-6 lg:flex-row">
           <div className="flex-1">
             <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
               Patient Added
@@ -219,8 +219,8 @@ export function Charts({ patients }: ChartsProps) {
             </div>
           </div>
 
-          <Separator orientation="horizontal" className="lg:hidden" />
-          <Separator orientation="vertical" className="hidden lg:block" />
+          <Separator orientation="horizontal" className="md:hidden" />
+          <Separator orientation="vertical" className="hidden md:block" />
 
           <div className="flex-1">
             <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
@@ -241,8 +241,8 @@ export function Charts({ patients }: ChartsProps) {
             </div>
           </div>
 
-          <Separator orientation="horizontal" className="lg:hidden" />
-          <Separator orientation="vertical" className="hidden lg:block" />
+          <Separator orientation="horizontal" className="md:hidden" />
+          <Separator orientation="vertical" className="hidden md:block" />
 
           <div className="flex-1">
             <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
@@ -268,7 +268,7 @@ export function Charts({ patients }: ChartsProps) {
   }, []);
 
   return (
-    <div className="container p-4 pb-20 text-center md:py-10 lg:mx-auto lg:px-0">
+    <div className="p-4 pb-20 text-center md:w-full lg:pt-10 lg:mx-auto lg:px-0">
       <div className="mb-8 flex flex-col gap-2">
         <h2 className="text-3xl font-bold tracking-tight lg:text-3xl">
           Charts
@@ -289,7 +289,7 @@ export function Charts({ patients }: ChartsProps) {
       </div>
 
       <div className="mt-8 flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-4">
-        <div className="flex w-full flex-col gap-4 lg:flex-row lg:gap-4">
+        <div className="flex w-full flex-col gap-4 md:flex-row md:gap-4">
           <AlarmChart patients={patients} />
 
           <AgeChart patients={patients} />

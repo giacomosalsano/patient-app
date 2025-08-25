@@ -174,7 +174,7 @@ export const EditPatientAction = ({
   return (
     <DialogComponent
       dialogContentClassName="lg:min-w-2xl"
-      dialogFooterClassName="lg:flex-row lg:gap-2"
+      dialogFooterClassName="lg:flex-row lg:gap-2 md:flex-col-reverse md:gap-2"
       trigger={editPatientDialogTrigger}
       title="Edit Patient"
       description="Edit patient information"

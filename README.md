@@ -60,7 +60,7 @@ Check out the live application in production: **[Patient App](https://patient-ap
 
 1. Clone the repository:
    ```bash
-   git clone [repository_url] cd patient-app
+   git clone https://github.com/giacomosalsano/patient-app.git cd patient-app
    ```
 2. Install dependencies:
    ```bash

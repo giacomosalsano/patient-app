@@ -11,4 +11,30 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          ui: [
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-select",
+            "@radix-ui/react-label",
+            "@radix-ui/react-separator",
+            "@radix-ui/react-slot",
+            "@radix-ui/react-toggle",
+          ],
+          charts: ["recharts"],
+          table: ["@tanstack/react-table"],
+          forms: ["react-hook-form", "@hookform/resolvers", "zod"],
+          utils: [
+            "axios",
+            "clsx",
+            "tailwind-merge",
+            "class-variance-authority",
+          ],
+        },
+      },
+    },
+  },
 });

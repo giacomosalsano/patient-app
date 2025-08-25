@@ -69,9 +69,9 @@ Check out the live application in production: **[Patient App](https://patient-ap
 3. Create environment variables:
    ```bash
    # Create .env file with:
-   VITE_API_BASE_URL=your_api_url
-   VITE_API_USER=your_username
-   VITE_API_PASS=your_password
+   VITE_API_BASE_URL=api_url
+   VITE_API_USER=api_username
+   VITE_API_PASS=api_password
    ```
 4. Start the development server:
    ```bash

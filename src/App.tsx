@@ -4,6 +4,7 @@ import PatientsTable from "@/components/patients-table";
 import { usePatient } from "@/modules/patient/hooks/use-patient";
 import type { Patient } from "@/modules/patient/types/patient";
 import { useEffect, useState } from "react";
+import Footer from "./components/footer";
 
 function App() {
   const { handlers, patients, loading } = usePatient();
@@ -30,6 +31,7 @@ function App() {
           <Charts patients={patients as Patient[]} />
         )}
       </div>
+      <Footer />
     </>
   );
 }

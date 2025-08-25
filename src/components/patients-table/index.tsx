@@ -18,10 +18,14 @@ export default function PatientsTable({
   const columns = createColumns(onPatientUpdated);
 
   return (
-    <div className="container mx-auto py-10">
-      <div className="mb-8 flex flex-col gap-2">
-        <h2 className="text-3xl font-bold tracking-tight lg:text-3xl">Table</h2>
-        <p className="text-muted-foreground">Manage your patients</p>
+    <div className="container p-4 pb-20 text-center md:py-10 lg:mx-auto lg:px-0">
+      <div className="mb-4 flex flex-col gap-2 md:mb-8">
+        <h2 className="text-center text-3xl font-bold tracking-tight md:text-start md:text-3xl">
+          Table
+        </h2>
+        <p className="text-muted-foreground text-center md:text-start">
+          Manage your patients
+        </p>
       </div>
       <DataTable
         columns={columns}

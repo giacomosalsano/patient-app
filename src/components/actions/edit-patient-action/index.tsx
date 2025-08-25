@@ -153,7 +153,7 @@ export const EditPatientAction = ({
 
   const editPatientDialogFooter = useMemo(() => {
     return (
-      <div className="flex flex-row gap-2">
+      <div className="flex w-full flex-col justify-center gap-2">
         <Button
           type="submit"
           disabled={loading}
@@ -173,6 +173,8 @@ export const EditPatientAction = ({
 
   return (
     <DialogComponent
+      dialogContentClassName="lg:min-w-2xl"
+      dialogFooterClassName="lg:flex-row lg:gap-2"
       trigger={editPatientDialogTrigger}
       title="Edit Patient"
       description="Edit patient information"

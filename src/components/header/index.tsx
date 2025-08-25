@@ -45,7 +45,7 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
           <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold lg:h-8 lg:w-8">
             P
           </span>
-          <h1 className="hidden font-bold lg:block lg:text-xl">Patient App</h1>
+          <h1 className="hidden font-bold md:block md:text-xl">Patient App</h1>
         </div>
 
         <nav className="flex items-center gap-4 lg:gap-4">

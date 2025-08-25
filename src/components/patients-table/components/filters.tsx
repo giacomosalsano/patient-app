@@ -7,7 +7,7 @@ import type {
   SortingState,
   Table,
 } from "@tanstack/react-table";
-import { Search } from "lucide-react";
+import { BrushCleaningIcon, Search } from "lucide-react";
 import { useMemo } from "react";
 
 interface FiltersProps {
@@ -63,8 +63,8 @@ export function Filters({
   }
 
   return (
-    <div className="flex flex-row items-center gap-4">
-      <div className="relative min-w-md">
+    <div className="flex w-full flex-col items-center gap-4 md:flex-row md:gap-2">
+      <div className="relative w-full md:min-w-xs lg:min-w-md">
         <Search className="text-muted-foreground absolute top-2.5 left-2 h-4 w-4" />
         <Input
           placeholder="Filter by name..."
@@ -74,40 +74,45 @@ export function Filters({
         />
       </div>
 
-      <SelectComponent
-        value={(table.getColumn("sex")?.getFilterValue() as string) || ""}
-        onValueChange={(value) => {
-          table.getColumn("sex")?.setFilterValue(value === "all" ? "" : value);
-        }}
-        defaultValue="all"
-        placeholder="Sex"
-        triggerClassName="w-[120px]"
-        items={sexSelectItems}
-      />
+      <div className="flex w-full items-center justify-center gap-2 md:justify-end">
+        <SelectComponent
+          value={(table.getColumn("sex")?.getFilterValue() as string) || ""}
+          onValueChange={(value) => {
+            table
+              .getColumn("sex")
+              ?.setFilterValue(value === "all" ? "" : value);
+          }}
+          defaultValue="all"
+          placeholder="Sex"
+          triggerClassName="w-[120px]"
+          items={sexSelectItems}
+        />
 
-      <SelectComponent
-        value={(table.getColumn("alarm")?.getFilterValue() as string) || ""}
-        onValueChange={(value) => {
-          table
-            .getColumn("alarm")
-            ?.setFilterValue(value === "all" ? "" : value);
-        }}
-        defaultValue="all"
-        placeholder="Alarm"
-        triggerClassName="w-[120px]"
-        items={alarmSelectItems}
-      />
+        <SelectComponent
+          value={(table.getColumn("alarm")?.getFilterValue() as string) || ""}
+          onValueChange={(value) => {
+            table
+              .getColumn("alarm")
+              ?.setFilterValue(value === "all" ? "" : value);
+          }}
+          defaultValue="all"
+          placeholder="Alarm"
+          triggerClassName="w-[120px]"
+          items={alarmSelectItems}
+        />
 
-      <Button
-        variant="outline"
-        onClick={() => {
-          setGlobalFilter("");
-          setColumnFilters([]);
-          setSorting([]);
-        }}
-      >
-        Clear Filters
-      </Button>
+        <Button
+          variant="outline"
+          onClick={() => {
+            setGlobalFilter("");
+            setColumnFilters([]);
+            setSorting([]);
+          }}
+        >
+          <BrushCleaningIcon />
+          <span className="">Clear Filters</span>
+        </Button>
+      </div>
     </div>
   );
 }

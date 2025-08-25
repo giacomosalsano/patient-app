@@ -15,6 +15,8 @@ interface DialogComponentProps {
   children: React.ReactNode;
   footer: React.ReactNode;
   closeButton: React.ReactNode;
+  dialogContentClassName?: string;
+  dialogFooterClassName?: string;
 }
 
 export function DialogComponent({
@@ -24,19 +26,21 @@ export function DialogComponent({
   children,
   footer,
   closeButton,
+  dialogContentClassName,
+  dialogFooterClassName,
 }: DialogComponentProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="min-w-2xl lg:min-w-2xl">
+      <DialogContent className={dialogContentClassName}>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         {children}
-        <DialogFooter>
-          {closeButton}
+        <DialogFooter className={dialogFooterClassName}>
           {footer}
+          {closeButton}
         </DialogFooter>
       </DialogContent>
     </Dialog>

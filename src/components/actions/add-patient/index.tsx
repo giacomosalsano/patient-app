@@ -73,9 +73,10 @@ export const AddPatientAction = ({
     return (
       <Button
         size="sm"
-        className="flex max-w-fit flex-row justify-end gap-2 self-end"
+        className="flex w-full flex-row gap-2 md:max-w-fit lg:justify-end"
       >
-        <PlusIcon className="h-4 w-4" /> Add Patient
+        <PlusIcon className="h-4 w-4" />
+        <span className="block md:hidden">Add Patient</span>
       </Button>
     );
   }, [loading]);
@@ -210,7 +211,7 @@ export const AddPatientAction = ({
             </Button>
           </div>
 
-          <div className="flex max-h-80 flex-col gap-2 overflow-y-auto">
+          <div className="flex max-h-40 flex-col gap-2 overflow-y-auto lg:max-h-80">
             {parameters.map((parameter, index) => (
               <div
                 key={parameter.id}
@@ -295,7 +296,7 @@ export const AddPatientAction = ({
 
   const addPatientDialogFooter = useMemo(() => {
     return (
-      <div className="flex flex-row gap-2">
+      <div className="flex w-full flex-col justify-center gap-2">
         <Button
           type="button"
           disabled={loading}
@@ -315,6 +316,8 @@ export const AddPatientAction = ({
 
   return (
     <DialogComponent
+      dialogContentClassName="lg:min-w-2xl"
+      dialogFooterClassName="lg:flex-row lg:gap-2"
       trigger={addPatientDialogTrigger}
       title="Add Patient"
       description="Add patient information"

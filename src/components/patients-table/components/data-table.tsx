@@ -83,8 +83,8 @@ export function DataTable<TData, TValue>({
   };
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-[3fr_1fr] items-center justify-between gap-4 lg:grid-cols-[3fr_1fr]">
+    <div className="mx-auto w-full items-center justify-center space-y-4">
+      <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-2 lg:justify-between">
         <Filters
           globalFilter={globalFilter}
           setGlobalFilter={setGlobalFilter}

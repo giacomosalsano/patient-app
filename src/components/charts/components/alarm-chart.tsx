@@ -61,7 +61,7 @@ export function AlarmChart({ patients }: AlarmChartProps) {
     );
   }, []);
   return (
-    <div className="flex w-3xl flex-col gap-2 lg:w-3xl lg:gap-2">
+    <div className="flex w-full flex-col gap-2 lg:w-3xl lg:gap-2">
       <CardComponent cardContent={patientDistributionCardContent} />
     </div>
   );

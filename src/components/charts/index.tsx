@@ -180,6 +180,7 @@ export function Charts({ patients }: ChartsProps) {
               ) / patients.length,
             )}
           </div>
+          <p className="text-muted-foreground text-xs">Rounded average age</p>
         </div>
       </div>
     );
@@ -189,18 +190,20 @@ export function Charts({ patients }: ChartsProps) {
     return (
       <div className="space-y-4">
         <div className="flex flex-col gap-1 py-2">
-          <div className="flex items-center gap-2">
+          <div className="flex gap-2 lg:items-center">
             <h1 className="text-lg font-semibold">Recent Activity</h1>
             <Activity className="text-muted-foreground h-4 w-4" />
           </div>
-          <p className="text-muted-foreground text-xs">
+          <p className="text-muted-foreground text-start text-xs lg:text-center">
             Latest patient updates and alarms
           </p>
         </div>
 
         <div className="flex flex-col gap-6 lg:flex-row">
           <div className="flex-1">
-            <h2 className="mb-2 text-sm font-medium">Patient Added</h2>
+            <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
+              Patient Added
+            </h2>
             <div className="space-y-2">
               {mockPatientsAdded.map((patient) => (
                 <div
@@ -220,7 +223,9 @@ export function Charts({ patients }: ChartsProps) {
           <Separator orientation="vertical" className="hidden lg:block" />
 
           <div className="flex-1">
-            <h2 className="mb-2 text-sm font-medium">Alarm Triggered</h2>
+            <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
+              Alarm Triggered
+            </h2>
             <div className="space-y-2">
               {mockAlarmsTriggered.map((alarm) => (
                 <div
@@ -240,7 +245,9 @@ export function Charts({ patients }: ChartsProps) {
           <Separator orientation="vertical" className="hidden lg:block" />
 
           <div className="flex-1">
-            <h2 className="mb-2 text-sm font-medium">Parameter Updated</h2>
+            <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
+              Parameter Updated
+            </h2>
             <div className="space-y-2">
               {mockParameterUpdated.map((parameter) => (
                 <div
@@ -261,7 +268,7 @@ export function Charts({ patients }: ChartsProps) {
   }, []);
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container p-4 pb-20 text-center md:py-10 lg:mx-auto lg:px-0">
       <div className="mb-8 flex flex-col gap-2">
         <h2 className="text-3xl font-bold tracking-tight lg:text-3xl">
           Charts
@@ -271,7 +278,7 @@ export function Charts({ patients }: ChartsProps) {
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-4">
         <CardComponent cardContent={totalPatientsCardContent} />
 
         <CardComponent cardContent={totalParametersCardContent} />
@@ -281,8 +288,8 @@ export function Charts({ patients }: ChartsProps) {
         <CardComponent cardContent={averageAgeCardContent} />
       </div>
 
-      <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-2 lg:gap-4">
-        <div className="flex flex-row gap-4 lg:gap-4">
+      <div className="mt-8 flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-4">
+        <div className="flex w-full flex-col gap-4 lg:flex-row lg:gap-4">
           <AlarmChart patients={patients} />
 
           <AgeChart patients={patients} />

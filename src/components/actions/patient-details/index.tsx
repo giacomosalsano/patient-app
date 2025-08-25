@@ -25,7 +25,7 @@ export const PatientDetails = ({ patient }: PatientDetailsProps) => {
 
   const patientDetailsContent = useMemo(() => {
     return (
-      <div className="flex min-w-6xl flex-col gap-4 space-y-4 overflow-y-auto px-4 pb-4 text-center lg:min-w-6xl lg:gap-4 lg:space-y-4 lg:px-4 lg:pb-4">
+      <div className="flex w-full flex-col gap-4 space-y-4 overflow-y-auto px-4 pb-4 text-center lg:gap-4 lg:space-y-4 lg:px-4 lg:pb-4">
         <PatientInfoBox patient={patient} />
         {patientHasParameters ? (
           <div className="w-full items-center justify-center">

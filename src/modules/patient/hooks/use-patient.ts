@@ -88,7 +88,7 @@ export function usePatient() {
       try {
         const { data } = await listPatientById({ id: props.id });
 
-        toast.success("Listing patients successfully");
+        toast.success("Patient listed successfully");
 
         handleSetProperties({ patients: [data] });
 
@@ -123,7 +123,7 @@ export function usePatient() {
       try {
         const { data } = await addPatient(props);
 
-        toast.success("Adding patient successfully");
+        toast.success("Patient added successfully");
 
         if (onSuccess) {
           onSuccess(data);

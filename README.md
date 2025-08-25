@@ -84,4 +84,4 @@ For full details on architecture, features, components, and improvement suggesti
 
 ---
 
-made with ♥ by [Your Name/Handle](https://giacomosalsano.com)!
+made with ♥ by [giacomosalsano](https://giacomosalsano.com)!

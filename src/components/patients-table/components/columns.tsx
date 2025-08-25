@@ -67,7 +67,7 @@ export const createColumns = (
   },
   {
     accessorKey: "parameters",
-    header: "Number of Parameters",
+    header: "Parameters",
     enableSorting: true,
     enableColumnFilter: false,
     cell: ({ row }) => {

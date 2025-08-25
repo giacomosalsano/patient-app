@@ -123,7 +123,7 @@ export function Charts({ patients }: ChartsProps) {
         <CardComponent cardContent={averageAgeCardContent} />
       </div>
 
-      <div className="mt-8 flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-4">
+      <div className="mt-4 lg:mt-8 flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-4">
         <div className="flex w-full flex-col gap-4 md:flex-row md:gap-4">
           <AlarmChart patients={patients} />
 

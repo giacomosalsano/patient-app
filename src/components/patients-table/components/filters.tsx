@@ -63,8 +63,8 @@ export function Filters({
   }
 
   return (
-    <div className="flex w-full flex-col items-center gap-4 md:flex-row md:gap-2">
-      <div className="relative w-full md:min-w-md lg:min-w-lg">
+    <div className="flex w-full flex-col items-center gap-4 md:flex-row md:gap-2 lg:w-auto lg:justify-start">
+      <div className="relative w-full lg:min-w-md xl:min-w-lg">
         <Search className="text-muted-foreground absolute top-2.5 left-2 h-4 w-4" />
         <Input
           placeholder="Filter by name..."
@@ -110,7 +110,7 @@ export function Filters({
           }}
         >
           <BrushCleaningIcon />
-          <span className="md:hidden lg:block">Clear Filters</span>
+          <span className="md:hidden xl:block">Clear Filters</span>
         </Button>
       </div>
     </div>

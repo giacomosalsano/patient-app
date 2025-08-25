@@ -77,7 +77,7 @@ export const AddPatientAction = ({
         className="flex w-full flex-row gap-2 md:max-w-fit lg:justify-end"
       >
         <PlusIcon className="h-4 w-4" />
-        <span>Add Patient</span>
+        <span className="md:hidden xl:block">Add Patient</span>
       </Button>
     );
   }, [loading]);

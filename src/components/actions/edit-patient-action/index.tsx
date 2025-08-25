@@ -8,7 +8,7 @@ import { PatientSex, type Patient } from "@/modules/patient/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EditIcon, Loader2 } from "lucide-react";
 import { useCallback, useMemo } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 
 interface EditPatientActionProps {
@@ -24,6 +24,7 @@ const formSchema = z.object({
     message: "Family name must be at least 2 characters.",
   }),
   sex: z.enum([PatientSex.MALE, PatientSex.FEMALE]),
+  birthDate: z.date(),
 });
 
 type FormSchemaType = z.infer<typeof formSchema>;
@@ -43,6 +44,7 @@ export const EditPatientAction = ({
       givenName: patient.givenName,
       familyName: patient.familyName,
       sex: patient.sex as PatientSex,
+      birthDate: new Date(patient.birthDate),
     },
   });
 
@@ -100,10 +102,33 @@ export const EditPatientAction = ({
               items={sexSelectItems}
             />
           </div>
+          <div className="flex w-full flex-col gap-2">
+            <Label>Birth Date</Label>
+            <Controller
+              name="birthDate"
+              control={form.control}
+              render={({ field }) => (
+                <Input
+                  type="date"
+                  value={
+                    field.value instanceof Date
+                      ? field.value.toISOString().split("T")[0]
+                      : ""
+                  }
+                  onChange={(e) => {
+                    if (e.target.value) {
+                      field.onChange(new Date(e.target.value));
+                    }
+                  }}
+                  onBlur={field.onBlur}
+                />
+              )}
+            />
+          </div>
         </div>
       </div>
     );
-  }, [form, patient, sexSelectItems, onSexSelectValueChange]);
+  }, [form, patient, sexSelectItems, onSexSelectValueChange, form.control]);
 
   const handleSubmitFormOnClick = useCallback(() => {
     form.handleSubmit((data: FormSchemaType) => {
@@ -112,6 +137,7 @@ export const EditPatientAction = ({
           familyName: data.familyName,
           givenName: data.givenName,
           sex: data.sex,
+          birthDate: data.birthDate.toISOString(),
         },
         onSuccess: () => {
           form.reset();
@@ -145,28 +171,17 @@ export const EditPatientAction = ({
   }, [loading, handleSubmitFormOnClick]);
 
   return (
-    <>
-      <form
-        onSubmit={form.handleSubmit(handleSubmitFormOnClick)}
-        className="flex flex-col gap-4"
-      >
-        <DialogComponent
-          trigger={editPatientDialogTrigger}
-          title="Edit Patient"
-          description="Edit patient information"
-          children={editPatientDialogContent}
-          footer={editPatientDialogFooter}
-          closeButton={
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => form.reset()}
-            >
-              Cancel
-            </Button>
-          }
-        />
-      </form>
-    </>
+    <DialogComponent
+      trigger={editPatientDialogTrigger}
+      title="Edit Patient"
+      description="Edit patient information"
+      children={editPatientDialogContent}
+      footer={editPatientDialogFooter}
+      closeButton={
+        <Button type="button" variant="outline" onClick={() => form.reset()}>
+          Cancel
+        </Button>
+      }
+    />
   );
 };

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { DialogComponent } from "@/components/ui/components/dialog-component";
 import { SelectComponent } from "@/components/ui/components/select-component";
+import { DialogClose } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { usePatient } from "@/modules/patient/hooks/use-patient";
@@ -154,7 +155,7 @@ export const EditPatientAction = ({
     return (
       <div className="flex flex-row gap-2">
         <Button
-          type="button"
+          type="submit"
           disabled={loading}
           onClick={handleSubmitFormOnClick}
         >
@@ -178,9 +179,11 @@ export const EditPatientAction = ({
       children={editPatientDialogContent}
       footer={editPatientDialogFooter}
       closeButton={
-        <Button type="button" variant="outline" onClick={() => form.reset()}>
-          Cancel
-        </Button>
+        <DialogClose asChild>
+          <Button type="button" variant="outline" onClick={() => form.reset()}>
+            Cancel
+          </Button>
+        </DialogClose>
       }
     />
   );

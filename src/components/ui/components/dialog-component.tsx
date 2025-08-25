@@ -1,6 +1,5 @@
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -36,8 +35,8 @@ export function DialogComponent({
         </DialogHeader>
         {children}
         <DialogFooter>
-          {closeButton && <DialogClose asChild>{closeButton}</DialogClose>}
-          {footer && footer}
+          {closeButton}
+          {footer}
         </DialogFooter>
       </DialogContent>
     </Dialog>

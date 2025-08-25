@@ -104,7 +104,7 @@ export const RecentActivity = () => {
 
         <div className="flex flex-col gap-6 md:flex-row md:gap-6 lg:flex-row">
           <div className="flex-1">
-            <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
+            <h2 className="mb-2 text-start text-sm font-medium">
               Patient Added
             </h2>
             <div className="space-y-2">
@@ -126,7 +126,7 @@ export const RecentActivity = () => {
           <Separator orientation="vertical" className="hidden md:block" />
 
           <div className="flex-1">
-            <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
+            <h2 className="mb-2 text-start text-sm font-medium">
               Alarm Triggered
             </h2>
             <div className="space-y-2">
@@ -148,7 +148,7 @@ export const RecentActivity = () => {
           <Separator orientation="vertical" className="hidden md:block" />
 
           <div className="flex-1">
-            <h2 className="mb-2 text-start text-sm font-medium lg:text-center">
+            <h2 className="mb-2 text-start text-sm font-medium">
               Parameter Updated
             </h2>
             <div className="space-y-2">

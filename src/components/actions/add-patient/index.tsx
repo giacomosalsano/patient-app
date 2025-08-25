@@ -65,8 +65,8 @@ export const AddPatientAction = ({
   const addPatientDialogTrigger = useMemo(() => {
     if (loading) {
       return (
-        <div className="flex max-w-fit flex-row justify-end gap-2 self-end">
-          <Skeleton className="h-9 w-32" />
+        <div className="flex w-full flex-row gap-2 md:max-w-fit lg:justify-end">
+          <Skeleton className="h-9 w-full md:w-32" />
         </div>
       );
     }

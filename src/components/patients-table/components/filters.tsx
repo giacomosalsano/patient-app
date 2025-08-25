@@ -45,18 +45,15 @@ export function Filters({
 
   if (loading) {
     return (
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-1 items-center space-x-2">
-          <div className="relative max-w-sm flex-1">
-            <Skeleton className="h-10 w-full" />
-          </div>
+      <div className="flex w-full flex-col items-center gap-4 md:flex-row md:gap-2 lg:w-auto lg:justify-start">
+        <div className="relative w-full lg:min-w-md xl:min-w-lg">
+          <Skeleton className="h-10 w-full" />
         </div>
 
-        <div className="flex items-center space-x-2">
-          <Skeleton className="h-4 w-4" />
+        <div className="flex w-full items-center justify-center gap-2 md:justify-end">
           <Skeleton className="h-10 w-[120px]" />
           <Skeleton className="h-10 w-[120px]" />
-          <Skeleton className="h-10 w-[100px]" />
+          <Skeleton className="h-10 w-[100px] md:hidden xl:w-auto xl:min-w-[120px]" />
         </div>
       </div>
     );

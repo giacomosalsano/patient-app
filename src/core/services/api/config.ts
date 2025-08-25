@@ -20,7 +20,7 @@ export const apiClient = axios.create({
   },
 });
 
-// DEBUGGING INTERCEPTORS
+// DEBUGGING INTERCEPTORS, DEVONO ESSERE RIMUSSI IN PRODUZIONE
 apiClient.interceptors.request.use(
   (config) => {
     console.log(`🚀 Request: ${config.method?.toUpperCase()} ${config.url}`);

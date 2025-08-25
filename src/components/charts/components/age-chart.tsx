@@ -3,7 +3,7 @@ import { CardComponent } from "@/components/ui/components/card-component";
 import { ChartComponent } from "@/components/ui/components/chart-component";
 import type { Patient } from "@/modules/patient/types";
 import { formatAge } from "@/utils/date";
-import { BarChart3 } from "lucide-react";
+import { PieChartIcon } from "lucide-react";
 import { useMemo } from "react";
 
 interface AgeChartProps {
@@ -89,7 +89,7 @@ export function AgeChart({ patients }: AgeChartProps) {
       <div className="flex flex-col gap-2">
         <div className="flex flex-row items-center justify-between py-2">
           <h1 className="text-lg font-bold">Age Distribution</h1>
-          <BarChart3 className="text-muted-foreground h-4 w-4" />
+          <PieChartIcon className="text-muted-foreground h-4 w-4" />
         </div>
         <div>
           <ChartComponent

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Toggle } from "@/components/ui/toggle";
-import { BarChart3, Moon, Sun, Table } from "lucide-react";
+import { Moon, PieChartIcon, Sun, Table } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface HeaderProps {
@@ -48,7 +48,7 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
           <h1 className="text-xl font-bold">Patient App</h1>
         </div>
 
-        <nav className="flex items-center gap-1">
+        <nav className="flex items-center gap-4">
           <Button
             variant={currentView === "table" ? "default" : "ghost"}
             size="sm"
@@ -64,7 +64,7 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
             onClick={() => onViewChange("charts")}
             className="flex items-center gap-2"
           >
-            <BarChart3 className="h-4 w-4" />
+            <PieChartIcon className="h-4 w-4" />
             Charts
           </Button>
         </nav>

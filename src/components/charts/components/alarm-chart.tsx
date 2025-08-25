@@ -2,7 +2,7 @@ import type { ChartConfig } from "@/components/ui/chart";
 import { CardComponent } from "@/components/ui/components/card-component";
 import { ChartComponent } from "@/components/ui/components/chart-component";
 import type { Patient } from "@/modules/patient/types";
-import { BarChart3 } from "lucide-react";
+import { PieChartIcon } from "lucide-react";
 import { useMemo } from "react";
 
 interface AlarmChartProps {
@@ -47,7 +47,7 @@ export function AlarmChart({ patients }: AlarmChartProps) {
       <div className="flex flex-col gap-2">
         <div className="flex flex-row items-center justify-between py-2">
           <h1 className="text-lg font-bold">Patient with Alarms</h1>
-          <BarChart3 className="text-muted-foreground h-4 w-4" />
+          <PieChartIcon className="text-muted-foreground h-4 w-4" />
         </div>
         <div>
           <ChartComponent

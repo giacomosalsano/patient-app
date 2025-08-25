@@ -7,6 +7,7 @@ import { PatientDetailsTable } from "@/components/actions/patient-details/compon
 import { PatientInfoBox } from "@/components/patient-info-box";
 import { DrawerComponent } from "@/components/ui/components/drawer-component";
 import { useMemo } from "react";
+import { TooltipComponent } from "@/components/ui/components/tooltip-component";
 
 interface PatientDetailsProps {
   patient: Patient;
@@ -18,7 +19,9 @@ export const PatientDetails = ({ patient }: PatientDetailsProps) => {
   const patientDetailsTrigger = useMemo(() => {
     return (
       <Button variant="outline" size="sm">
-        <EyeIcon className="h-4 w-4" />
+        <TooltipComponent content="View patient details">
+          <EyeIcon className="h-4 w-4" />
+        </TooltipComponent>
       </Button>
     );
   }, []);

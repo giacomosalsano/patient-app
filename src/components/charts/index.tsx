@@ -263,13 +263,15 @@ export function Charts({ patients }: ChartsProps) {
   return (
     <div className="container mx-auto py-10">
       <div className="mb-8 flex flex-col gap-2">
-        <h2 className="text-3xl font-bold tracking-tight">Charts</h2>
+        <h2 className="text-3xl font-bold tracking-tight lg:text-3xl">
+          Charts
+        </h2>
         <p className="text-muted-foreground">
           Visualize patient data and analytics
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-4">
         <CardComponent cardContent={totalPatientsCardContent} />
 
         <CardComponent cardContent={totalParametersCardContent} />
@@ -279,8 +281,8 @@ export function Charts({ patients }: ChartsProps) {
         <CardComponent cardContent={averageAgeCardContent} />
       </div>
 
-      <div className="mt-8 grid grid-cols-2 gap-4">
-        <div className="flex flex-row gap-4">
+      <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-2 lg:gap-4">
+        <div className="flex flex-row gap-4 lg:gap-4">
           <AlarmChart patients={patients} />
 
           <AgeChart patients={patients} />

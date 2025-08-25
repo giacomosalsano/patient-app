@@ -28,7 +28,7 @@ export function DialogComponent({
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="min-w-2xl">
+      <DialogContent className="min-w-2xl lg:min-w-2xl">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{description}</DialogDescription>

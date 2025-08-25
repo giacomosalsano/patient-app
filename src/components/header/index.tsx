@@ -42,20 +42,20 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
     <header className="bg-background/95 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="flex h-16 w-full items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold">
+          <span className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold lg:h-8 lg:w-8">
             P
           </span>
-          <h1 className="text-xl font-bold">Patient App</h1>
+          <h1 className="hidden font-bold lg:block lg:text-xl">Patient App</h1>
         </div>
 
-        <nav className="flex items-center gap-4">
+        <nav className="flex items-center gap-4 lg:gap-4">
           <Button
             variant={currentView === "table" ? "default" : "ghost"}
             size="sm"
             onClick={() => onViewChange("table")}
             className="flex items-center gap-2"
           >
-            <Table className="h-4 w-4" />
+            <Table className="h-4 w-4 lg:h-4 lg:w-4" />
             Table
           </Button>
           <Button
@@ -64,7 +64,7 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
             onClick={() => onViewChange("charts")}
             className="flex items-center gap-2"
           >
-            <PieChartIcon className="h-4 w-4" />
+            <PieChartIcon className="h-4 w-4 lg:h-4 lg:w-4" />
             Charts
           </Button>
         </nav>
@@ -77,9 +77,9 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
             variant="outline"
           >
             {isDark ? (
-              <Sun className="h-8 w-8" />
+              <Sun className="h-8 w-8 lg:h-8 lg:w-8" />
             ) : (
-              <Moon className="h-8 w-8" />
+              <Moon className="h-8 w-8 lg:h-8 lg:w-8" />
             )}
           </Toggle>
         </div>

@@ -12,7 +12,7 @@ interface PatientInfoBoxProps {
 export const PatientInfoBox = ({ patient }: PatientInfoBoxProps) => {
   const patientInfoBoxContent = useMemo(() => {
     return (
-      <div className="flex flex-row items-center justify-center gap-4">
+      <div className="flex flex-row items-center justify-center gap-4 lg:gap-4">
         <div className="flex flex-row items-center justify-center gap-1">
           <p className="font-bold">ID:</p>
           <p>{patient.id}</p>
@@ -23,9 +23,9 @@ export const PatientInfoBox = ({ patient }: PatientInfoBoxProps) => {
         </div>
         <div className="flex flex-row items-center justify-center gap-1">
           {patient.sex === PatientSex.MALE ? (
-            <Badge className="rounded-full bg-male text-white">M</Badge>
+            <Badge className="bg-male rounded-full text-white">M</Badge>
           ) : (
-            <Badge className="rounded-full bg-female text-white">F</Badge>
+            <Badge className="bg-female rounded-full text-white">F</Badge>
           )}
         </div>
       </div>

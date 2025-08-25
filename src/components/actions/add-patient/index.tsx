@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { DialogComponent } from "@/components/ui/components/dialog-component";
 import { SelectComponent } from "@/components/ui/components/select-component";
+import { DialogClose } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -160,7 +161,7 @@ export const AddPatientAction = ({
 
   const addPatientDialogContent = useMemo(() => {
     return (
-      <div className="my-4 flex w-full max-h-96 flex-col gap-2 space-y-4 overflow-y-auto lg:gap-4">
+      <div className="my-4 flex max-h-96 w-full flex-col gap-2 space-y-4 overflow-y-auto lg:min-h-[500px] lg:gap-4">
         <div className="flex flex-col gap-2">
           <Label>Given Name</Label>
           <Input
@@ -299,7 +300,7 @@ export const AddPatientAction = ({
       <div className="flex w-full flex-col justify-center gap-2">
         <Button
           type="button"
-          disabled={loading}
+          disabled={loading || form.formState.isSubmitting}
           onClick={() => form.handleSubmit(handleSubmitForm)()}
         >
           {loading ? (
@@ -324,17 +325,19 @@ export const AddPatientAction = ({
       children={addPatientDialogContent}
       footer={addPatientDialogFooter}
       closeButton={
-        <Button
-          type="button"
-          variant="outline"
-          onClick={() => {
-            form.reset();
-            setParameters([]);
-            setSelectedSex("");
-          }}
-        >
-          Cancel
-        </Button>
+        <DialogClose asChild>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => {
+              form.reset();
+              setParameters([]);
+              setSelectedSex("");
+            }}
+          >
+            Cancel
+          </Button>
+        </DialogClose>
       }
     />
   );

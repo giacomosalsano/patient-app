@@ -52,6 +52,10 @@ sequenceDiagram
     Frontend->>User: Shows updated data
 ```
 
+## 🌐 Live Demo
+
+Check out the live application in production: **[Patient App](https://patient-app-eight.vercel.app/)**
+
 ## ⚡ How to Run Locally
 
 1. Clone the repository:

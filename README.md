@@ -1,69 +1,83 @@
-# React + TypeScript + Vite
+# Patient App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **frontend** healthcare patient management web application with real-time data visualization and comprehensive patient monitoring capabilities, connecting to an external patient API.
 
-Currently, two official plugins are available:
+### Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Framework:** React 19 with Vite
+- **Language:** TypeScript
+- **Navigation:** Single Page Application (SPA)
+- **State Management:** React Hooks with custom usePatient hook
+- **Forms & Validation:** React Hook Form + Zod
+- **HTTP Client:** Axios with custom request wrapper
+- **Styling:** Tailwind CSS v4 with custom components
+- **Storage:** Local Storage for theme preferences
+- **Key Libraries/Services:** Recharts for data visualization, Radix UI for components, Lucide React for icons
 
-## Expanding the ESLint configuration
+<div align="center" style="display: inline_block justify-center"><br>
+  <img src="https://skillicons.dev/icons?i=typescript,react,tailwind,vite,axios" alt="icons" /> </div>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Main Features
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Patient Data Management** - Read, create, and update operations for patient records via external API
+- **Interactive Data Visualization** - Real-time charts and metrics dashboard
+- **Parameter Monitoring** - Track vital signs and alarm detection (mocked data)
+- **Dual View Interface** - Switch between table and chart views seamlessly
+- **Dark/Light Theme** - User preference with system detection
+- **Responsive Design** - Mobile-first approach for all devices
+- **Recent Activity** - Mocked activity data with potential for real-time implementation
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 📊 Core Application Flow
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**This is a new, required section.** Create a Mermaid diagram that illustrates the most important flow of the application (e.g., user uploads something, it gets processed by the backend/AI, and the result is returned).
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant ExternalAPI as External Patient API
+    participant Database
+
+    Note over Frontend, Database: frontend application<br/>No backend responsibility
+    User->>Frontend: Loads application
+    Frontend->>ExternalAPI: Requests patient data (GET)
+    ExternalAPI->>Database: Queries patient records
+    Database-->>ExternalAPI: Returns patient data
+    ExternalAPI-->>Frontend: Sends patient information
+    Frontend->>User: Displays table/charts view
+    User->>Frontend: Interacts with data (CRUD)
+    Frontend->>ExternalAPI: Sends patient updates (UPDATE/CREATE)
+    ExternalAPI->>Database: Updates patient records
+    ExternalAPI-->>Frontend: Confirms operation
+    Frontend->>User: Shows updated data
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚡ How to Run Locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Clone the repository:
+   ```bash
+   git clone [repository_url] cd patient-app
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create environment variables:
+   ```bash
+   # Create .env file with:
+   VITE_API_BASE_URL=your_api_url
+   VITE_API_USER=your_username
+   VITE_API_PASS=your_password
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📚 Learn More
+
+For full details on architecture, features, components, and improvement suggestions, please see the [complete documentation](./documentation.md).
+
+---
+
+made with ♥ by [Your Name/Handle](https://giacomosalsano.com)!

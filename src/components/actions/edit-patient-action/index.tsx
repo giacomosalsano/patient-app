@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { usePatient } from "@/modules/patient/hooks/use-patient";
 import { PatientSex, type Patient } from "@/modules/patient/types";
+import { dateStringToDate, dateToDateString } from "@/utils/date";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EditIcon, Loader2 } from "lucide-react";
 import { useCallback, useMemo } from "react";
@@ -45,7 +46,7 @@ export const EditPatientAction = ({
       givenName: patient.givenName,
       familyName: patient.familyName,
       sex: patient.sex as PatientSex,
-      birthDate: new Date(patient.birthDate),
+      birthDate: dateStringToDate(patient.birthDate), // Usando função utilitária
     },
   });
 
@@ -114,7 +115,7 @@ export const EditPatientAction = ({
                   type="date"
                   value={
                     field.value instanceof Date
-                      ? field.value.toISOString().split("T")[0]
+                      ? dateToDateString(field.value)
                       : ""
                   }
                   onChange={(e) => {
@@ -140,7 +141,7 @@ export const EditPatientAction = ({
         familyName: data.familyName,
         givenName: data.givenName,
         sex: data.sex,
-        birthDate: data.birthDate.toISOString(),
+        birthDate: dateToDateString(data.birthDate), // Usando função utilitária
       };
 
       handleUpdatePatient({

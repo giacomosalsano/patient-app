@@ -1,5 +1,19 @@
+export function localUTCDate(date: string) {
+  const [year, month, day] = date.split("-");
+  const localDate = new Date(
+    parseInt(year),
+    parseInt(month) - 1,
+    parseInt(day),
+  );
+
+  return localDate;
+}
+
+
 export function formatDate(date: string) {
-  return new Date(date).toLocaleDateString("en-US", {
+  const localDate = localUTCDate(date);
+
+  return localDate.toLocaleDateString("en-US", {
     day: "2-digit",
     month: "long",
     year: "numeric",
@@ -7,7 +21,9 @@ export function formatDate(date: string) {
 }
 
 export function formatDateWithTime(date: string) {
-  return new Date(date).toLocaleDateString("en-US", {
+  const localDate = localUTCDate(date);
+
+  return localDate.toLocaleDateString("en-US", {
     day: "2-digit",
     month: "short",
     year: "numeric",
@@ -18,7 +34,26 @@ export function formatDateWithTime(date: string) {
 
 export function formatAge(date: string) {
   const today = new Date();
-  const birthDate = new Date(date);
+  const birthDate = localUTCDate(date);
+
   const age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    return age - 1;
+  }
+
   return age;
+}
+
+export function dateToDateString(date: Date): string {
+  return date.toISOString().split("T")[0];
+}
+
+export function dateStringToDate(dateString: string): Date {
+  const [year, month, day] = dateString.split("-");
+  return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
 }

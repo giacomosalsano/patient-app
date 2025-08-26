@@ -91,7 +91,7 @@ export const EditPatientAction = ({
           />
         </div>
 
-        <div className="flex w-full flex-row justify-between gap-2">
+        <div className="flex w-full flex-col justify-between gap-8 md:flex-row md:gap-2">
           <div className="flex w-full flex-col gap-2">
             <Label>Sex</Label>
             <SelectComponent
@@ -103,6 +103,7 @@ export const EditPatientAction = ({
               items={sexSelectItems}
             />
           </div>
+
           <div className="flex w-full flex-col gap-2">
             <Label>Birth Date</Label>
             <Controller

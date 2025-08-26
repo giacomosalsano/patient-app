@@ -81,7 +81,7 @@ export function Filters({
           }}
           defaultValue="all"
           placeholder="Sex"
-          triggerClassName="w-[120px]"
+          triggerClassName="w-full lg:w-[120px]"
           items={sexSelectItems}
         />
 
@@ -94,7 +94,7 @@ export function Filters({
           }}
           defaultValue="all"
           placeholder="Alarm"
-          triggerClassName="w-[120px]"
+          triggerClassName="w-full lg:w-[120px]"
           items={alarmSelectItems}
         />
 

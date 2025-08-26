@@ -21,8 +21,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ArrowUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ArrowUpDown } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -139,6 +139,7 @@ export function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                   className={cn(
                     index % 2 === 0 && "bg-muted/50",
+                    "hover:bg-hover hover:animate-pulse",
                   )}
                 >
                   {row.getVisibleCells().map((cell) => (

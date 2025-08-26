@@ -155,21 +155,15 @@
   }
 }
 
-/* Estilos específicos para inputs de data em dispositivos iOS */
 @supports (-webkit-touch-callout: none) {
   input[type="date"] {
-    /* Previne zoom automático no iOS */
     font-size: 16px;
-    /* Garante que o input mantenha suas dimensões */
     min-height: 36px;
-    /* Previne mudanças de layout */
     transform: translateZ(0);
-    /* Melhora a performance de renderização */
     -webkit-appearance: none;
     appearance: none;
   }
 
-  /* Estilos específicos para o seletor de data nativo do iOS */
   input[type="date"]::-webkit-calendar-picker-indicator {
     background: transparent;
     bottom: 0;
@@ -183,36 +177,25 @@
     width: auto;
   }
 
-  /* Previne problemas de layout em modais */
   [data-slot="dialog-content"] input[type="date"] {
-    /* Garante que o input não quebre o layout do modal */
     max-width: 100%;
     box-sizing: border-box;
-    /* Previne overflow */
     overflow: hidden;
   }
 
-  /* Melhorias adicionais para modais em dispositivos móveis */
   [data-slot="dialog-content"] {
-    /* Garante que o modal seja responsivo */
     max-height: 90vh;
     overflow-y: auto;
-    /* Previne problemas de scroll */
     -webkit-overflow-scrolling: touch;
-    /* Melhora a performance */
     transform: translateZ(0);
   }
 
-  /* Previne problemas de layout com inputs em modais */
   [data-slot="dialog-content"] .flex.flex-col.gap-2 {
-    /* Garante que os containers de input não quebrem */
     min-width: 0;
     flex-shrink: 0;
   }
 
-  /* Estilos específicos para o container do input de data */
   [data-slot="dialog-content"] .relative.w-full {
-    /* Garante que o container mantenha suas dimensões */
     min-width: 0;
     flex-shrink: 0;
   }

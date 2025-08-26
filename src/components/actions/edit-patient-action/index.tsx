@@ -135,13 +135,16 @@ export const EditPatientAction = ({
 
   const handleSubmitFormOnClick = useCallback(() => {
     form.handleSubmit((data: FormSchemaType) => {
+      const updateData = {
+        id: patient.id,
+        familyName: data.familyName,
+        givenName: data.givenName,
+        sex: data.sex,
+        birthDate: data.birthDate.toISOString(),
+      };
+
       handleUpdatePatient({
-        props: {
-          familyName: data.familyName,
-          givenName: data.givenName,
-          sex: data.sex,
-          birthDate: data.birthDate.toISOString(),
-        },
+        props: updateData,
         onSuccess: () => {
           form.reset();
           const dialogTrigger = document.querySelector('[data-state="open"]');
@@ -151,7 +154,7 @@ export const EditPatientAction = ({
         },
       });
     })();
-  }, [form, handleUpdatePatient, onPatientUpdated]);
+  }, [form, handleUpdatePatient, onPatientUpdated, patient.id]);
 
   const editPatientDialogFooter = useMemo(() => {
     return (

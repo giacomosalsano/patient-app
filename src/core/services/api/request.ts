@@ -20,18 +20,15 @@ export async function request<T>({
   body,
   params,
 }: RequestProps): Promise<Response<T>> {
-  const query: any = {};
   let axiosResponse: AxiosResponse;
 
   if (method === "get") {
-    Object.assign(query, { params });
+    axiosResponse = await apiClient.get(url, { params });
+  } else if (method === "post" || method === "put") {
+    axiosResponse = await apiClient[method](url, body);
+  } else {
+    axiosResponse = await apiClient[method](url);
   }
-
-  if (method === "post" || method === "put") {
-    Object.assign(query, body);
-  }
-
-  axiosResponse = await apiClient[method](url, query);
 
   return {
     code: axiosResponse.status,

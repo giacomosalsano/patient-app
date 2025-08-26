@@ -36,9 +36,10 @@ export async function addPatient(params: AddPatientProps) {
 }
 
 export async function updatePatient(params: UpdatePatientProps) {
-  return await request<UpdatePatientResponse>({
+  const response = await request<UpdatePatientResponse>({
     url: `${module}/Update`,
     method: "post",
     body: params,
   });
+  return response;
 }

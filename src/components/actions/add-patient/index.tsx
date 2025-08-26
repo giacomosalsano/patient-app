@@ -186,6 +186,7 @@ export const AddPatientAction = ({
               type="date"
               {...form.register("birthDate")}
               className="min-h-[36px] w-full text-base"
+              max={new Date().toISOString().split('T')[0]}
             />
           </div>
         </div>

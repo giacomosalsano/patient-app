@@ -122,6 +122,7 @@ export const EditPatientAction = ({
                     }
                   }}
                   onBlur={field.onBlur}
+                  max={new Date().toISOString().split("T")[0]}
                 />
               )}
             />

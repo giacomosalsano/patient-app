@@ -22,12 +22,14 @@ export function Charts({ patients }: ChartsProps) {
     return (
       <div>
         <div className="flex flex-row items-center justify-between py-2">
-          <h1 className="text-lg font-bold">Total Patients</h1>
-          <Users className="text-muted-foreground h-4 w-4" />
+          <h1 className="text-start text-lg font-bold md:text-center">
+            Total Patients
+          </h1>
+          <Users className="text-muted-foreground h-4 w-4 shrink-0" />
         </div>
         <div className="flex flex-col items-start justify-start gap-2">
           <div className="text-2xl font-bold">{patients.length}</div>
-          <p className="text-muted-foreground text-xs">
+          <p className="text-muted-foreground text-start text-xs md:text-center">
             +20.1% from last month
           </p>
         </div>
@@ -39,8 +41,10 @@ export function Charts({ patients }: ChartsProps) {
     return (
       <div>
         <div className="flex flex-row items-center justify-between py-2">
-          <h1 className="text-lg font-bold">Parameters</h1>
-          <Activity className="text-muted-foreground h-4 w-4" />
+          <h1 className="text-start text-lg font-bold md:text-center">
+            Parameters
+          </h1>
+          <Activity className="text-muted-foreground h-4 w-4 shrink-0" />
         </div>
         <div className="flex flex-col items-start justify-start gap-2">
           <div className="text-2xl font-bold">
@@ -49,7 +53,9 @@ export function Charts({ patients }: ChartsProps) {
               0,
             )}
           </div>
-          <p className="text-muted-foreground text-xs">+10% from last month</p>
+          <p className="text-start text-muted-foreground text-xs md:text-center">
+            +10% from last month
+          </p>
         </div>
       </div>
     );
@@ -59,8 +65,10 @@ export function Charts({ patients }: ChartsProps) {
     return (
       <div>
         <div className="flex flex-row items-center justify-between py-2">
-          <h1 className="text-lg font-bold">Alarms</h1>
-          <AlertTriangle className="text-muted-foreground h-4 w-4" />
+          <h1 className="text-start text-lg font-bold md:text-center">
+            Alarms
+          </h1>
+          <AlertTriangle className="text-muted-foreground h-4 w-4 shrink-0" />
         </div>
         <div className="flex flex-col items-start justify-start gap-2">
           <div className="text-2xl font-bold">
@@ -72,7 +80,9 @@ export function Charts({ patients }: ChartsProps) {
               0,
             )}
           </div>
-          <p className="text-muted-foreground text-xs">-5.2% from last month</p>
+          <p className="text-start text-muted-foreground text-xs md:text-center">
+            -5.2% from last month
+          </p>
         </div>
       </div>
     );
@@ -82,13 +92,15 @@ export function Charts({ patients }: ChartsProps) {
     return (
       <div>
         <div className="flex flex-row items-center justify-between py-2">
-          <h1 className="text-lg font-bold">Average Age</h1>
-          <BarChart3 className="text-muted-foreground h-4 w-4" />
+          <h1 className="text-start text-lg font-bold md:text-center">
+            Average Age
+          </h1>
+          <BarChart3 className="text-muted-foreground h-4 w-4 shrink-0" />
         </div>
 
         <div className="flex flex-col items-start justify-start gap-2">
           <div className="flex flex-row items-center gap-2 text-2xl font-bold">
-            <EqualApproximately className="text-muted-foreground h-4 w-4" />
+            <EqualApproximately className="text-muted-foreground h-4 w-4 shrink-0" />
             {Math.round(
               patients.reduce(
                 (acc, patient) => acc + formatAge(patient.birthDate),
@@ -96,7 +108,9 @@ export function Charts({ patients }: ChartsProps) {
               ) / patients.length,
             )}
           </div>
-          <p className="text-muted-foreground text-xs">Rounded average age</p>
+          <p className="text-start text-muted-foreground text-xs md:text-center">
+            Rounded average age
+          </p>
         </div>
       </div>
     );
@@ -123,7 +137,7 @@ export function Charts({ patients }: ChartsProps) {
         <CardComponent cardContent={averageAgeCardContent} />
       </div>
 
-      <div className="mt-4 lg:mt-8 flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-4">
+      <div className="mt-4 flex flex-col gap-4 lg:mt-8 lg:grid lg:grid-cols-2 lg:gap-4">
         <div className="flex w-full flex-col gap-4 md:flex-row md:gap-4">
           <AlarmChart patients={patients} />
 

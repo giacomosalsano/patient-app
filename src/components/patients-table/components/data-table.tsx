@@ -57,7 +57,17 @@ export function DataTable<TData, TValue>({
       const matches =
         (patient.givenName?.toLowerCase() || "").includes(searchValue) ||
         (patient.familyName?.toLowerCase() || "").includes(searchValue) ||
-        (patient.id?.toString() || "").includes(searchValue);
+        (patient.id?.toString() || "").includes(searchValue) ||
+        (
+          patient.givenName?.toLowerCase() +
+            " " +
+            patient.familyName?.toLowerCase() || ""
+        ).includes(searchValue) ||
+        (
+          patient.familyName?.toLowerCase() +
+            " " +
+            patient.givenName?.toLowerCase() || ""
+        ).includes(searchValue);
 
       return matches;
     },

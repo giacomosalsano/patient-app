@@ -18,8 +18,8 @@ export const PatientInfoBox = ({ patient }: PatientInfoBoxProps) => {
           <p>{patient.id}</p>
         </div>
         <div className="flex flex-row items-center justify-center gap-1">
-          <p className="font-bold">Birth Date:</p>
-          <p>{formatDate(patient.birthDate)}</p>
+          <p className="hidden font-bold md:block">Birth Date:</p>
+          <p className="font-bold md:font-normal">{formatDate(patient.birthDate)}</p>
         </div>
         <div className="flex flex-row items-center justify-center gap-1">
           {patient.sex === PatientSex.MALE ? (

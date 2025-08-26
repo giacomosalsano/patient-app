@@ -181,7 +181,13 @@ export const AddPatientAction = ({
 
         <div className="flex flex-col gap-2">
           <Label>Birth Date</Label>
-          <Input type="date" {...form.register("birthDate")} />
+          <div className="relative w-full">
+            <Input
+              type="date"
+              {...form.register("birthDate")}
+              className="min-h-[36px] w-full text-base"
+            />
+          </div>
         </div>
 
         <div className="flex w-full flex-row justify-between gap-2">

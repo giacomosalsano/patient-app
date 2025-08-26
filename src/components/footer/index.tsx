@@ -3,8 +3,8 @@ import { Facebook, Globe, Instagram } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="bg-background fixed bottom-0 w-full border-t">
-      <div className="mx-auto flex items-center justify-between gap-4 px-2 py-4 md:px-4">
-        <p className="text-muted-foreground text-center text-xs md:text-sm">
+      <div className="mx-auto flex items-center justify-between gap-4 px-1 py-2 md:px-4 md:py-4">
+        <p className="text-muted-foreground text-left text-xs md:text-center md:text-sm">
           © 2025 Patient App. All rights reserved.
         </p>
 

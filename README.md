@@ -29,8 +29,6 @@ A **frontend** healthcare patient management web application with real-time data
 
 ## 📊 Core Application Flow
 
-**This is a new, required section.** Create a Mermaid diagram that illustrates the most important flow of the application (e.g., user uploads something, it gets processed by the backend/AI, and the result is returned).
-
 ```mermaid
 sequenceDiagram
     participant User

@@ -21,14 +21,14 @@ export function formatDate(date: string) {
 }
 
 export function formatDateWithTime(date: string) {
-  const localDate = localUTCDate(date);
+  const localDate = new Date(date);
 
   return localDate.toLocaleDateString("en-US", {
     day: "2-digit",
-    month: "short",
+    month: "numeric",
     year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
+    hour: "numeric",
+    minute: "numeric",
   });
 }
 

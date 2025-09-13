@@ -83,7 +83,7 @@ const mockParameterUpdated = [
   },
   {
     id: 5,
-    name: "Federico Barone",
+    name: "Bianca Barone",
     updatedAt: "2025-08-24T14:55:00",
   },
 ];
